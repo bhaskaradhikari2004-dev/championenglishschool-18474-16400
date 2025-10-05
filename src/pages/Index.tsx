@@ -565,7 +565,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-5xl mx-auto">
             {[
               { icon: MapPin, title: 'Visit Us', text: 'Sayapatri Margha\nDharan-15, Nepal', delay: 200 },
-              { icon: Phone, title: 'Call Us', text: '+977-25-580323\n+977-9852056323', delay: 400 },
+              { icon: Phone, title: 'Call Us', text: '+977-025-530302\n+977-9814350277', delay: 400 },
               { icon: Clock, title: 'Office Hours', text: 'Sun - Fri: 6:00 AM - 5:00 PM\nSaturday: Closed', delay: 600 }
             ].map((item) => (
               <Card 
