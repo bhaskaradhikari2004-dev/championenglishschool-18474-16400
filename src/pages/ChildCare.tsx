@@ -2,9 +2,17 @@ import { Layout } from "@/components/Layout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Check, Clock, Phone, MapPin } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import childcareBanner from "@/assets/childcare-banner.png";
 
 export default function ChildCare() {
+  const [showBanner, setShowBanner] = useState(false);
+
+  useEffect(() => {
+    setShowBanner(true);
+  }, []);
+
   const features = [
     "Breakfast, Lunch and Dinner",
     "Learning by doing",
@@ -17,6 +25,15 @@ export default function ChildCare() {
 
   return (
     <Layout>
+      <Dialog open={showBanner} onOpenChange={setShowBanner}>
+        <DialogContent className="max-w-4xl p-0">
+          <img 
+            src={childcareBanner} 
+            alt="Champion Child Care Centre" 
+            className="w-full h-auto rounded-lg"
+          />
+        </DialogContent>
+      </Dialog>
       <div className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-12">
@@ -26,15 +43,6 @@ export default function ChildCare() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Discovering a world of learning and wonder, preparing children for a lifetime of joyful learning and academic success.
           </p>
-        </div>
-
-        {/* Banner Image */}
-        <div className="mb-12 rounded-lg overflow-hidden shadow-lg">
-          <img 
-            src={childcareBanner} 
-            alt="Champion Child Care Centre Banner" 
-            className="w-full h-auto"
-          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
