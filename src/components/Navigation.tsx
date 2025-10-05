@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, GraduationCap } from "lucide-react";
+import { Menu } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navItems = [
   { name: "Home", href: "/" },
@@ -23,8 +24,8 @@ export function Navigation() {
     <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-2">
-            <GraduationCap className="h-8 w-8 text-primary" />
+          <Link to="/" className="flex items-center space-x-3">
+            <img src={logo} alt="Champion English School Logo" className="h-12 w-12 object-contain" />
             <span className="font-bold text-xl text-primary">Champion English School</span>
           </Link>
 

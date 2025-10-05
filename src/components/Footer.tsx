@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { GraduationCap, MapPin, Phone, Mail } from "lucide-react";
+import { MapPin, Phone } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -7,8 +8,8 @@ export function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <GraduationCap className="h-6 w-6 text-primary" />
+            <div className="flex items-center space-x-3">
+              <img src={logo} alt="Champion English School Logo" className="h-10 w-10 object-contain" />
               <span className="font-bold text-lg">Champion English School</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
