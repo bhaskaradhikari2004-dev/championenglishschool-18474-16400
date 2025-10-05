@@ -44,6 +44,9 @@ export function Footer() {
               <Link to="/leadership" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Leadership
               </Link>
+              <Link to="/childcare" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                Child Care
+              </Link>
               <Link to="/contact" className="text-sm text-muted-foreground hover:text-primary transition-colors">
                 Contact Us
               </Link>

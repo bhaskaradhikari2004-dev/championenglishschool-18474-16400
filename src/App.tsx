@@ -13,6 +13,7 @@ import Gallery from "./pages/Gallery";
 import Results from "./pages/Results";
 import Leadership from "./pages/Leadership";
 import Contact from "./pages/Contact";
+import ChildCare from "./pages/ChildCare";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/admin/Dashboard";
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/results" element={<Results />} />
             <Route path="/leadership" element={<Leadership />} />
+            <Route path="/childcare" element={<ChildCare />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={<AdminLayout><Dashboard /></AdminLayout>} />
