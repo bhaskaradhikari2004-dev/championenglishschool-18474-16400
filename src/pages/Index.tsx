@@ -184,109 +184,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Child Care Center Section */}
-      <section 
-        ref={childCareAnim.ref}
-        className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
-      >
-        {/* Decorative elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-orange-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-40 h-40 bg-amber-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
-            childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <div className="inline-block mb-4">
-              <div className="bg-orange-500/10 backdrop-blur-sm rounded-full p-4 md:p-5">
-                <Baby className="h-10 w-10 md:h-12 md:w-12 text-orange-600 dark:text-orange-400" />
-              </div>
-            </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-orange-900 dark:text-orange-100">
-              Champion Child Care Centre
-            </h2>
-            <p className="text-sm md:text-base text-orange-800/80 dark:text-orange-200/80 max-w-2xl mx-auto mb-4">
-              Discovering a world of learning and wonder, preparing children for a lifetime of joyful learning and academic success
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
-            <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale ${
-              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-            }`}>
-              <CardHeader>
-                <CardTitle className="text-xl text-orange-900 dark:text-orange-100 flex items-center gap-2">
-                  <Clock className="h-5 w-5 text-orange-600" />
-                  Open for Enrollment 2025/2026
-                </CardTitle>
-                <CardDescription className="text-orange-800/70 dark:text-orange-200/70">
-                  The Right Place to Play, Learn & Grow for Your Children
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                  <span className="text-muted-foreground">Breakfast, Lunch and Dinner</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                  <span className="text-muted-foreground">Learning by doing</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                  <span className="text-muted-foreground">Quiet home environment</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
-                  <span className="text-muted-foreground">In-school medical nurse</span>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className={`bg-gradient-to-br from-orange-500 to-amber-600 text-white border-0 hover:shadow-2xl transition-all duration-700 hover-scale ${
-              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <CardHeader>
-                <CardTitle className="text-2xl text-white flex items-center gap-2">
-                  <Sparkles className="h-6 w-6" />
-                  FREE Admission!
-                </CardTitle>
-                <CardDescription className="text-white/90 text-base">
-                  Special offer for 2025/2026 enrollment
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Clock className="h-5 w-5" />
-                    <span className="font-semibold">Operating Hours</span>
-                  </div>
-                  <p className="text-sm text-white/90">Sunday - Friday: 8:00 AM - 5:00 PM</p>
-                </div>
-                <div className="space-y-2">
-                  <Button asChild size="lg" variant="secondary" className="w-full group">
-                    <Link to="/childcare">
-                      Learn More About Child Care
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  </Button>
-                  <div className="flex gap-2">
-                    <Button asChild variant="outline" className="flex-1 bg-white/20 border-white/30 text-white hover:bg-white/30">
-                      <a href="tel:9814350277">
-                        <Phone className="h-4 w-4 mr-2" />
-                        Call Now
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
       {/* About Section */}
       <section 
         ref={aboutAnim.ref}
@@ -446,6 +343,109 @@ const Index = () => {
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Child Care Center Section */}
+      <section 
+        ref={childCareAnim.ref}
+        className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
+      >
+        {/* Decorative elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-orange-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-10 w-40 h-40 bg-amber-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
+            childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="inline-block mb-4">
+              <div className="bg-orange-500/10 backdrop-blur-sm rounded-full p-4 md:p-5">
+                <Baby className="h-10 w-10 md:h-12 md:w-12 text-orange-600 dark:text-orange-400" />
+              </div>
+            </div>
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-orange-900 dark:text-orange-100">
+              Champion Child Care Centre
+            </h2>
+            <p className="text-sm md:text-base text-orange-800/80 dark:text-orange-200/80 max-w-2xl mx-auto mb-4">
+              Discovering a world of learning and wonder, preparing children for a lifetime of joyful learning and academic success
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+            <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale ${
+              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+            }`}>
+              <CardHeader>
+                <CardTitle className="text-xl text-orange-900 dark:text-orange-100 flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-orange-600" />
+                  Open for Enrollment 2025/2026
+                </CardTitle>
+                <CardDescription className="text-orange-800/70 dark:text-orange-200/70">
+                  The Right Place to Play, Learn & Grow for Your Children
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                  <span className="text-muted-foreground">Breakfast, Lunch and Dinner</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                  <span className="text-muted-foreground">Learning by doing</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                  <span className="text-muted-foreground">Quiet home environment</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-orange-600"></div>
+                  <span className="text-muted-foreground">In-school medical nurse</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className={`bg-gradient-to-br from-orange-500 to-amber-600 text-white border-0 hover:shadow-2xl transition-all duration-700 hover-scale ${
+              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
+            }`}>
+              <CardHeader>
+                <CardTitle className="text-2xl text-white flex items-center gap-2">
+                  <Sparkles className="h-6 w-6" />
+                  FREE Admission!
+                </CardTitle>
+                <CardDescription className="text-white/90 text-base">
+                  Special offer for 2025/2026 enrollment
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock className="h-5 w-5" />
+                    <span className="font-semibold">Operating Hours</span>
+                  </div>
+                  <p className="text-sm text-white/90">Sunday - Friday: 8:00 AM - 5:00 PM</p>
+                </div>
+                <div className="space-y-2">
+                  <Button asChild size="lg" variant="secondary" className="w-full group">
+                    <Link to="/childcare">
+                      Learn More About Child Care
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </Button>
+                  <div className="flex gap-2">
+                    <Button asChild variant="outline" className="flex-1 bg-white/20 border-white/30 text-white hover:bg-white/30">
+                      <a href="tel:9814350277">
+                        <Phone className="h-4 w-4 mr-2" />
+                        Call Now
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
