@@ -5,6 +5,9 @@ import { Check, Clock, Phone, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import childcareBanner from "@/assets/childcare-banner.png";
+import childcareClassroom from "@/assets/childcare-classroom.jpg";
+import childcareActivities from "@/assets/childcare-activities.jpg";
+import childcareMeals from "@/assets/childcare-meals.jpg";
 
 export default function ChildCare() {
   const [showBanner, setShowBanner] = useState(false);
@@ -45,9 +48,25 @@ export default function ChildCare() {
           </p>
         </div>
 
+        {/* Hero Image Section */}
+        <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
+          <img 
+            src={childcareClassroom} 
+            alt="Champion Child Care Classroom" 
+            className="w-full h-[400px] object-cover"
+          />
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* About Section */}
-          <Card>
+          <Card className="overflow-hidden">
+            <div className="h-48 overflow-hidden">
+              <img 
+                src={childcareActivities} 
+                alt="Children Learning Activities" 
+                className="w-full h-full object-cover"
+              />
+            </div>
             <CardContent className="pt-6">
               <h2 className="text-2xl font-bold mb-4 text-primary">
                 The Right Place to Play, Learn & Grow
@@ -83,7 +102,14 @@ export default function ChildCare() {
           </Card>
 
           {/* Daycare Package Details */}
-          <Card className="bg-primary/5">
+          <Card className="bg-primary/5 overflow-hidden">
+            <div className="h-48 overflow-hidden">
+              <img 
+                src={childcareMeals} 
+                alt="Nutritious Meals for Children" 
+                className="w-full h-full object-cover"
+              />
+            </div>
             <CardContent className="pt-6">
               <h2 className="text-2xl font-bold mb-6 text-primary">
                 Daycare Package Details

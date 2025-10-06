@@ -13,10 +13,20 @@ export default function AdminSettings() {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [resetLoading, setResetLoading] = useState(false);
   const { toast } = useToast();
 
   const handlePasswordChange = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!currentPassword) {
+      toast({
+        title: "Error",
+        description: "Please enter your current password",
+        variant: "destructive",
+      });
+      return;
+    }
 
     if (newPassword !== confirmPassword) {
       toast({
@@ -39,6 +49,20 @@ export default function AdminSettings() {
     setLoading(true);
 
     try {
+      // First verify the current password by attempting to sign in
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user?.email) throw new Error("User email not found");
+
+      const { error: signInError } = await supabase.auth.signInWithPassword({
+        email: user.email,
+        password: currentPassword,
+      });
+
+      if (signInError) {
+        throw new Error("Current password is incorrect");
+      }
+
+      // If current password is correct, update to new password
       const { error } = await supabase.auth.updateUser({
         password: newPassword
       });
@@ -61,6 +85,33 @@ export default function AdminSettings() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleForgotPassword = async () => {
+    setResetLoading(true);
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user?.email) throw new Error("User email not found");
+
+      const { error } = await supabase.auth.resetPasswordForEmail(user.email, {
+        redirectTo: `${window.location.origin}/admin/settings`,
+      });
+
+      if (error) throw error;
+
+      toast({
+        title: "Success",
+        description: "Password reset email sent! Check your inbox.",
+      });
+    } catch (error: any) {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setResetLoading(false);
     }
   };
 
@@ -87,6 +138,18 @@ export default function AdminSettings() {
           <CardContent>
             <form onSubmit={handlePasswordChange} className="space-y-4">
               <div className="space-y-2">
+                <Label htmlFor="current-password">Current Password</Label>
+                <Input
+                  id="current-password"
+                  type="password"
+                  value={currentPassword}
+                  onChange={(e) => setCurrentPassword(e.target.value)}
+                  required
+                  placeholder="Enter current password"
+                />
+              </div>
+
+              <div className="space-y-2">
                 <Label htmlFor="new-password">New Password</Label>
                 <Input
                   id="new-password"
@@ -112,16 +175,27 @@ export default function AdminSettings() {
                 />
               </div>
 
-              <Button type="submit" disabled={loading}>
-                {loading ? (
-                  <>
-                    <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Updating...
-                  </>
-                ) : (
-                  "Update Password"
-                )}
-              </Button>
+              <div className="flex items-center justify-between">
+                <Button type="submit" disabled={loading}>
+                  {loading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Updating...
+                    </>
+                  ) : (
+                    "Update Password"
+                  )}
+                </Button>
+                
+                <Button 
+                  type="button" 
+                  variant="link" 
+                  onClick={handleForgotPassword}
+                  disabled={resetLoading}
+                >
+                  {resetLoading ? "Sending..." : "Forgot Password?"}
+                </Button>
+              </div>
             </form>
           </CardContent>
         </Card>
