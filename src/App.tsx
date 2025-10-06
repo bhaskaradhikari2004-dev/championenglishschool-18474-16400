@@ -27,6 +27,8 @@ import AdminWelcomePopup from "./pages/admin/WelcomePopup";
 import AdminAboutInfo from "./pages/admin/AboutInfo";
 import AdminSettings from "./pages/admin/Settings";
 import AdminAboutMedia from "./pages/admin/AboutMedia";
+import AdminHomepageImages from "./pages/admin/HomepageImages";
+import AdminChildCareImages from "./pages/admin/ChildCareImages";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +60,8 @@ const App = () => (
             <Route path="/admin/welcome-popup" element={<AdminLayout><AdminWelcomePopup /></AdminLayout>} />
             <Route path="/admin/about-info" element={<AdminLayout><AdminAboutInfo /></AdminLayout>} />
             <Route path="/admin/about-media" element={<AdminLayout><AdminAboutMedia /></AdminLayout>} />
+            <Route path="/admin/homepage-images" element={<AdminLayout><AdminHomepageImages /></AdminLayout>} />
+            <Route path="/admin/childcare-images" element={<AdminLayout><AdminChildCareImages /></AdminLayout>} />
             <Route path="/admin/settings" element={<AdminLayout><AdminSettings /></AdminLayout>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

@@ -39,6 +39,8 @@ const menuItems = [
   { title: 'Leadership', url: '/admin/leadership', icon: Users },
   { title: 'About Info', url: '/admin/about-info', icon: Info },
   { title: 'About Media', url: '/admin/about-media', icon: Image },
+  { title: 'Homepage Images', url: '/admin/homepage-images', icon: Image },
+  { title: 'Child Care Images', url: '/admin/childcare-images', icon: Image },
   { title: 'Messages', url: '/admin/messages', icon: Mail },
   { title: 'Welcome Popup', url: '/admin/welcome-popup', icon: Sparkles },
   { title: 'Settings', url: '/admin/settings', icon: Settings },
