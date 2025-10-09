@@ -138,9 +138,13 @@ const Index = () => {
       {/* Leadership Section */}
       <section 
         ref={leadershipAnim.ref}
-        className="py-12 md:py-16 lg:py-20 bg-background"
+        className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 dark:from-blue-950/30 dark:via-orange-950/30 dark:to-blue-900/30 relative overflow-hidden"
       >
-        <div className="container mx-auto px-4">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 left-10 w-64 h-64 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 transition-all duration-1000 ${
             leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
