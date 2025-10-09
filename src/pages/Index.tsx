@@ -82,7 +82,7 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroAnim.ref}
-        className="relative bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground py-16 md:py-24 lg:py-32 overflow-hidden"
+        className="relative bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground py-12 md:py-16 lg:py-20 overflow-hidden"
       >
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden">
@@ -96,25 +96,25 @@ const Index = () => {
         <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 ${
           heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="flex justify-center mb-4 md:mb-6">
+          <div className="flex justify-center mb-3 md:mb-4">
             <div className="relative">
               <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-              <GraduationCap className="h-12 w-12 md:h-20 md:w-20 relative animate-bounce-gentle drop-shadow-lg" />
-              <Sparkles className="absolute -top-1 -right-1 md:-top-2 md:-right-2 h-5 w-5 md:h-8 md:w-8 animate-pulse text-accent-foreground drop-shadow-lg" />
+              <GraduationCap className="h-10 w-10 md:h-16 md:w-16 relative animate-bounce-gentle drop-shadow-lg" />
+              <Sparkles className="absolute -top-1 -right-1 h-4 w-4 md:h-6 md:w-6 animate-pulse text-accent-foreground drop-shadow-lg" />
             </div>
           </div>
-          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 md:mb-6 transition-all duration-1000 delay-200 tracking-tight ${
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-3 transition-all duration-1000 delay-200 tracking-tight ${
             heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
             Champion English School
           </h1>
-          <p className={`text-base sm:text-lg md:text-xl lg:text-2xl mb-3 md:mb-4 opacity-90 flex items-center justify-center gap-2 transition-all duration-1000 delay-300 ${
+          <p className={`text-base sm:text-lg md:text-xl mb-2 md:mb-3 opacity-90 flex items-center justify-center gap-2 transition-all duration-1000 delay-300 ${
             heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
             <MapPin className="h-4 w-4 md:h-5 md:w-5" />
             Sayapatri Margha, Dharan-15, Nepal
           </p>
-          <p className={`text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-8 opacity-80 max-w-2xl mx-auto font-medium transition-all duration-1000 delay-500 ${
+          <p className={`text-sm sm:text-base md:text-lg mb-5 md:mb-6 opacity-80 max-w-2xl mx-auto font-medium transition-all duration-1000 delay-500 ${
             heroAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             ✨ Unleashing the Champion within everyone ✨
@@ -138,24 +138,24 @@ const Index = () => {
       {/* Leadership Section */}
       <section 
         ref={leadershipAnim.ref}
-        className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 dark:from-blue-950/30 dark:via-orange-950/30 dark:to-blue-900/30 relative overflow-hidden"
+        className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 dark:from-blue-950/30 dark:via-orange-950/30 dark:to-blue-900/30 relative overflow-hidden"
       >
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 left-10 w-64 h-64 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className={`text-2xl md:text-3xl lg:text-4xl font-bold text-center mb-3 md:mb-4 transition-all duration-1000 ${
+          <h2 className={`text-2xl md:text-3xl font-bold text-center mb-2 transition-all duration-1000 ${
             leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Our Leadership
           </h2>
-          <p className={`text-center text-sm md:text-base text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
+          <p className={`text-center text-sm md:text-base text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
             leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             Meet the dedicated leaders guiding Champion English School toward excellence
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {leaders.length > 0 ? (
               leaders.map((leader, index) => (
                 <Card 
@@ -223,13 +223,13 @@ const Index = () => {
               </>
             )}
           </div>
-          <div className={`text-center mt-6 md:mt-8 transition-all duration-1000 delay-600 ${
+          <div className={`text-center mt-5 md:mt-6 transition-all duration-1000 delay-600 ${
             leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild className="hover-scale group text-sm md:text-base">
+            <Button asChild size="sm" className="hover-scale group">
               <Link to="/leadership">
                 Meet Our Full Leadership Team
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>
@@ -239,7 +239,7 @@ const Index = () => {
       {/* About Section */}
       <section 
         ref={aboutAnim.ref}
-        className="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden"
+        className="py-8 md:py-12 lg:py-16 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden"
       >
         {/* Animated background patterns */}
         <div className="absolute inset-0 opacity-5">
@@ -249,10 +249,10 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
+          <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2">
               About Champion English School
             </h2>
             <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
@@ -261,14 +261,14 @@ const Index = () => {
           </div>
 
           {/* Main Hero Image Section */}
-          <div className={`mb-12 md:mb-16 transition-all duration-1000 delay-200 ${
+          <div className={`mb-8 md:mb-10 transition-all duration-1000 delay-200 ${
             aboutAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
               <img 
                 src={aboutStudents} 
                 alt="Champion English School Students"
-                className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-40 sm:h-56 md:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 text-white">
@@ -283,7 +283,7 @@ const Index = () => {
           </div>
 
           {/* Feature Cards with Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 lg:gap-8 mb-8 md:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
             {[
               { 
                 icon: Award, 
@@ -314,7 +314,7 @@ const Index = () => {
                 }`}
                 style={{ transitionDelay: `${item.delay}ms` }}
               >
-                <div className="relative h-40 md:h-48 overflow-hidden">
+                <div className="relative h-32 md:h-40 overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.title}
@@ -342,7 +342,7 @@ const Index = () => {
           </div>
 
           {/* Mission, Vision, Values Grid */}
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-10 transition-all duration-1000 delay-700 ${
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8 transition-all duration-1000 delay-700 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {[
@@ -389,10 +389,10 @@ const Index = () => {
           <div className={`text-center transition-all duration-1000 delay-900 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild size="lg" className="hover-scale group shadow-lg text-sm md:text-base">
+            <Button asChild size="sm" className="hover-scale group shadow-lg">
               <Link to="/about">
                 Discover More About Us
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>
@@ -402,7 +402,7 @@ const Index = () => {
       {/* Child Care Center Section */}
       <section 
         ref={childCareAnim.ref}
-        className="py-12 md:py-16 lg:py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
+        className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
       >
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
@@ -411,23 +411,23 @@ const Index = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-8 md:mb-12 transition-all duration-1000 ${
+          <div className={`text-center mb-6 md:mb-8 transition-all duration-1000 ${
             childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="inline-block mb-4">
-              <div className="bg-orange-500/10 backdrop-blur-sm rounded-full p-4 md:p-5">
-                <Baby className="h-10 w-10 md:h-12 md:w-12 text-orange-600 dark:text-orange-400" />
+            <div className="inline-block mb-3">
+              <div className="bg-orange-500/10 backdrop-blur-sm rounded-full p-3 md:p-4">
+                <Baby className="h-8 w-8 md:h-10 md:w-10 text-orange-600 dark:text-orange-400" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4 text-orange-900 dark:text-orange-100">
+            <h2 className="text-2xl md:text-3xl font-bold mb-2 text-orange-900 dark:text-orange-100">
               Champion Child Care Centre
             </h2>
-            <p className="text-sm md:text-base text-orange-800/80 dark:text-orange-200/80 max-w-2xl mx-auto mb-4">
+            <p className="text-sm md:text-base text-orange-800/80 dark:text-orange-200/80 max-w-2xl mx-auto mb-3">
               Discovering a world of learning and wonder, preparing children for a lifetime of joyful learning and academic success
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8 mb-8">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6">
             <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale ${
               childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}>
