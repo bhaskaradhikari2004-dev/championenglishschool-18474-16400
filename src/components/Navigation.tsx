@@ -22,12 +22,19 @@ export function Navigation() {
   const location = useLocation();
 
   return (
-    <nav className="bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50 w-full border-b border-border">
-      <div className="container mx-auto px-4">
+    <nav className="bg-gradient-to-r from-background via-blue-50/30 to-orange-50/30 dark:from-background dark:via-blue-950/20 dark:to-orange-950/20 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 sticky top-0 z-50 w-full border-b-2 border-gradient-to-r from-blue-500/20 via-orange-500/20 to-blue-500/20 shadow-lg">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3">
-            <img src={logo} alt="Champion English School Logo" className="h-12 w-12 object-contain" />
-            <span className="font-bold text-xl text-primary">Champion English School</span>
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
+              <img src={logo} alt="Champion English School Logo" className="h-12 w-12 object-contain relative z-10 group-hover:scale-110 transition-transform duration-300" />
+            </div>
+            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300">Champion English School</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -36,16 +43,19 @@ export function Navigation() {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover-scale relative group ${
                   location.pathname === item.href
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
+                    ? "text-primary bg-gradient-to-r from-blue-500/10 to-orange-500/10 shadow-md"
+                    : "text-muted-foreground hover:text-primary"
                 }`}
               >
-                {item.name}
+                <span className="relative z-10">{item.name}</span>
+                {location.pathname !== item.href && (
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-orange-500/5 rounded-lg scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+                )}
               </Link>
             ))}
-            <Button asChild variant="outline" size="sm" className="ml-4">
+            <Button asChild variant="outline" size="sm" className="ml-4 bg-gradient-to-r from-blue-500 to-orange-500 text-white border-0 hover:shadow-lg hover-scale">
               <Link to="/admin">Admin</Link>
             </Button>
           </div>

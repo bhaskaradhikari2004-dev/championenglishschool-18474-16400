@@ -84,21 +84,27 @@ const Index = () => {
         ref={heroAnim.ref}
         className="relative bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground py-8 md:py-12 lg:py-16 overflow-hidden"
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
+        {/* Animated background elements with 3D effect */}
+        <div className="absolute inset-0 overflow-hidden transform-3d">
           <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
           <div className="absolute top-20 right-[10%] w-8 h-8 md:w-20 md:h-20 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-sm"></div>
           <div className="absolute bottom-20 left-[15%] w-6 h-6 md:w-16 md:h-16 bg-white/10 rounded-full animate-float animation-delay-400 blur-sm"></div>
+          <div className="absolute top-1/2 right-[20%] w-10 h-10 md:w-20 md:h-20 bg-accent/20 rounded-full animate-pulse animation-delay-600 blur-md"></div>
+          <div className="absolute bottom-32 right-[8%] w-8 h-8 md:w-16 md:h-16 bg-white/15 rounded-full animate-float animation-delay-800 blur-sm"></div>
+          {/* Animated gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-shimmer"></div>
         </div>
         
-        <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 ${
+        <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 transform-3d ${
           heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
           <div className="flex justify-center mb-2 md:mb-3">
-            <div className="relative">
+            <div className="relative transform-3d">
               <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-              <GraduationCap className="h-8 w-8 md:h-14 md:w-14 relative animate-bounce-gentle drop-shadow-lg" />
+              <div className="absolute inset-0 bg-gradient-to-r from-accent to-white/30 rounded-full blur-2xl animate-pulse animation-delay-400 opacity-50"></div>
+              <GraduationCap className="h-8 w-8 md:h-14 md:w-14 relative animate-bounce-gentle drop-shadow-2xl" />
               <Sparkles className="absolute -top-1 -right-1 h-3 w-3 md:h-5 md:w-5 animate-pulse text-accent-foreground drop-shadow-lg" />
+              <Sparkles className="absolute -bottom-1 -left-1 h-2.5 w-2.5 md:h-4 md:w-4 animate-pulse animation-delay-600 text-white/90 drop-shadow-lg" />
             </div>
           </div>
           <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 transition-all duration-1000 delay-200 tracking-tight leading-tight ${
@@ -117,17 +123,21 @@ const Index = () => {
           }`}>
             ✨ Unleashing the Champion within everyone ✨
           </p>
-          <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 ${
+          <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
             heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild className="hover-scale group shadow-lg h-10 text-sm">
-              <Link to="/about">
-                Learn More
-                <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+            <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
+              <Link to="/about" className="relative z-10">
+                <span className="relative z-10">Learn More</span>
+                <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
+                <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
               </Link>
             </Button>
-            <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-lg backdrop-blur-sm h-10 text-sm">
-              <Link to="/contact">Contact Us</Link>
+            <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
+              <Link to="/contact">
+                <span className="relative z-10">Contact Us</span>
+                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+              </Link>
             </Button>
           </div>
         </div>
@@ -138,9 +148,12 @@ const Index = () => {
         ref={leadershipAnim.ref}
         className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 dark:from-blue-950/30 dark:via-orange-950/30 dark:to-blue-900/30 relative overflow-hidden"
       >
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 transform-3d">
           <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 left-10 w-64 h-64 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-300 to-orange-300 rounded-full blur-3xl animate-pulse animation-delay-600 opacity-30"></div>
+          {/* Moving gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-100/20 to-transparent animate-shimmer"></div>
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h2 className={`text-2xl md:text-3xl font-bold text-center mb-2 transition-all duration-1000 ${
@@ -158,12 +171,13 @@ const Index = () => {
               leaders.map((leader, index) => (
                 <Card 
                   key={leader.id} 
-                  className={`text-center hover-scale hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/20 overflow-hidden group ${
+                  className={`text-center hover-scale hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/20 overflow-hidden group transform-3d ${
                     leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${(index + 1) * 150}ms` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
                   <CardHeader className="relative">
                     {leader.image_url ? (
                       <div className="relative mx-auto mb-3 w-20 h-20 md:w-28 md:h-28">
@@ -239,10 +253,13 @@ const Index = () => {
         ref={aboutAnim.ref}
         className="py-6 md:py-10 lg:py-14 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden"
       >
-        {/* Animated background patterns */}
-        <div className="absolute inset-0 opacity-5">
+        {/* Animated background patterns with 3D depth */}
+        <div className="absolute inset-0 opacity-5 transform-3d">
           <div className="absolute top-20 right-10 w-48 h-48 md:w-64 md:h-64 bg-primary rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-20 left-10 w-48 h-48 md:w-64 md:h-64 bg-accent rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+          <div className="absolute top-1/3 left-1/3 w-56 h-56 md:w-80 md:h-80 bg-blue-500 rounded-full blur-3xl animate-float animation-delay-600"></div>
+          {/* Diagonal gradient animation */}
+          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/10 to-transparent animate-shimmer"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -258,16 +275,17 @@ const Index = () => {
           </div>
 
           {/* Main Hero Image Section */}
-          <div className={`mb-6 md:mb-8 transition-all duration-1000 delay-200 ${
+          <div className={`mb-6 md:mb-8 transition-all duration-1000 delay-200 transform-3d ${
             aboutAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group">
               <img 
                 src={aboutStudents} 
                 alt="Champion English School Students"
-                className="w-full h-36 sm:h-48 md:h-64 lg:h-72 object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-36 sm:h-48 md:h-64 lg:h-72 object-cover group-hover:scale-110 transition-transform duration-1000"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-transparent to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-white">
                 <h3 className="text-base md:text-xl lg:text-2xl font-bold mb-1">
                   {aboutInfo?.welcome_title || 'Nurturing Future Champions'}
@@ -306,7 +324,7 @@ const Index = () => {
             ].map((item) => (
               <Card 
                 key={item.title}
-                className={`group overflow-hidden hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/30 ${
+                className={`group overflow-hidden hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/30 transform-3d ${
                   aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${item.delay}ms` }}
@@ -315,9 +333,10 @@ const Index = () => {
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-1000"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-transparent to-orange-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                   <div className="absolute top-3 left-3">
                     <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                       <item.icon className="h-4 w-4 md:h-5 md:w-5 text-primary" />
@@ -401,19 +420,23 @@ const Index = () => {
         ref={childCareAnim.ref}
         className="py-6 md:py-10 lg:py-14 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
       >
-        {/* Decorative elements */}
-        <div className="absolute inset-0 opacity-10">
+        {/* Decorative elements with 3D depth */}
+        <div className="absolute inset-0 opacity-10 transform-3d">
           <div className="absolute top-10 left-10 w-24 h-24 md:w-32 md:h-32 bg-orange-400 rounded-full blur-3xl animate-pulse"></div>
           <div className="absolute bottom-10 right-10 w-32 h-32 md:w-40 md:h-40 bg-amber-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-400 rounded-full blur-3xl animate-float animation-delay-600"></div>
+          {/* Shimmer effect */}
+          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-200/30 to-transparent animate-shimmer"></div>
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-5 md:mb-7 transition-all duration-1000 ${
+          <div className={`text-center mb-5 md:mb-7 transition-all duration-1000 transform-3d ${
             childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="inline-block mb-2">
-              <div className="bg-orange-500/10 backdrop-blur-sm rounded-full p-2.5 md:p-3">
-                <Baby className="h-7 w-7 md:h-9 md:w-9 text-orange-600 dark:text-orange-400" />
+            <div className="inline-block mb-2 relative">
+              <div className="absolute inset-0 bg-orange-500/20 blur-2xl rounded-full animate-pulse"></div>
+              <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 backdrop-blur-sm rounded-full p-2.5 md:p-3 relative transform-3d hover:scale-110 transition-transform duration-500">
+                <Baby className="h-7 w-7 md:h-9 md:w-9 text-orange-600 dark:text-orange-400 animate-bounce-gentle" />
               </div>
             </div>
             <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1.5 text-orange-900 dark:text-orange-100">
@@ -425,9 +448,10 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-2 gap-3 md:gap-5 mb-5">
-            <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale ${
+            <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale transform-3d relative overflow-hidden group ${
               childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
             }`}>
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <CardHeader>
                 <CardTitle className="text-base md:text-lg text-orange-900 dark:text-orange-100 flex items-center gap-2">
                   <Clock className="h-4 w-4 text-orange-600" />
@@ -457,9 +481,11 @@ const Index = () => {
               </CardContent>
             </Card>
 
-            <Card className={`bg-gradient-to-br from-orange-500 to-amber-600 text-white border-0 hover:shadow-2xl transition-all duration-700 hover-scale ${
+            <Card className={`bg-gradient-to-br from-orange-500 to-amber-600 text-white border-0 hover:shadow-2xl transition-all duration-700 hover-scale transform-3d relative overflow-hidden group ${
               childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
             }`}>
+              <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-transparent to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
               <CardHeader>
                 <CardTitle className="text-lg md:text-xl text-white flex items-center gap-2">
                   <Sparkles className="h-5 w-5" />
@@ -500,28 +526,35 @@ const Index = () => {
       {/* Contact Section - Compact & Elegant */}
       <section 
         ref={contactAnim.ref}
-        className="py-6 md:py-10 bg-muted/30"
+        className="py-6 md:py-10 bg-gradient-to-br from-muted/30 via-blue-50/20 to-orange-50/20 dark:from-muted/30 dark:via-blue-950/10 dark:to-orange-950/10 relative overflow-hidden"
       >
-        <div className="container mx-auto px-4">
-          <div className={`max-w-4xl mx-auto transition-all duration-1000 ${
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className={`max-w-4xl mx-auto transition-all duration-1000 transform-3d ${
             contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-lg md:text-xl font-bold text-center mb-4 md:mb-5">Get in Touch</h2>
+            <h2 className="text-lg md:text-xl font-bold text-center mb-4 md:mb-5 bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent">Get in Touch</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
               {[
-                { icon: MapPin, title: 'Visit', text: 'Sayapatri Margha, Dharan-15' },
-                { icon: Phone, title: 'Call', text: '+977-025-530302' },
-                { icon: Clock, title: 'Hours', text: 'Sun - Fri: 6AM - 5PM' }
+                { icon: MapPin, title: 'Visit', text: 'Sayapatri Margha, Dharan-15', color: 'blue' },
+                { icon: Phone, title: 'Call', text: '+977-025-530302', color: 'orange' },
+                { icon: Clock, title: 'Hours', text: 'Sun - Fri: 6AM - 5PM', color: 'blue' }
               ].map((item, index) => (
                 <div 
                   key={item.title}
-                  className={`flex items-center gap-2.5 p-3 rounded-lg bg-card hover:shadow-md transition-all duration-300 active:scale-95 ${
+                  className={`flex items-center gap-2.5 p-3 rounded-lg bg-card hover:shadow-lg transition-all duration-500 active:scale-95 border border-transparent hover:border-${item.color}-500/20 group relative overflow-hidden ${
                     contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <item.icon className="h-4 w-4 text-primary flex-shrink-0" />
-                  <div className="min-w-0">
+                  <div className={`absolute inset-0 bg-gradient-to-br from-${item.color}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                  <div className={`p-2 rounded-full bg-${item.color}-500/10 group-hover:scale-110 transition-transform duration-300`}>
+                    <item.icon className={`h-4 w-4 text-${item.color}-600 flex-shrink-0`} />
+                  </div>
+                  <div className="min-w-0 relative z-10">
                     <p className="text-xs font-semibold">{item.title}</p>
                     <p className="text-xs text-muted-foreground truncate">{item.text}</p>
                   </div>
@@ -531,10 +564,11 @@ const Index = () => {
             <div className={`text-center mt-4 transition-all duration-1000 delay-300 ${
               contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
             }`}>
-              <Button asChild size="sm" variant="outline" className="group h-9 text-xs active:scale-95">
+              <Button asChild size="sm" variant="outline" className="group h-9 text-xs active:scale-95 hover:shadow-lg border-2 hover:border-primary/30 relative overflow-hidden">
                 <Link to="/contact">
-                  Contact Us
-                  <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                  <span className="relative z-10">Contact Us</span>
+                  <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform relative z-10" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-orange-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
                 </Link>
               </Button>
             </div>
