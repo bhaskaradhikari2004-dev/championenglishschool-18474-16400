@@ -8,6 +8,30 @@ import { Label } from "@/components/ui/label";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string()
+    .trim()
+    .min(1, "Name is required")
+    .max(100, "Name must be less than 100 characters"),
+  email: z.string()
+    .trim()
+    .email("Invalid email address")
+    .max(255, "Email must be less than 255 characters"),
+  phone: z.string()
+    .trim()
+    .max(20, "Phone number must be less than 20 characters")
+    .optional(),
+  subject: z.string()
+    .trim()
+    .min(1, "Subject is required")
+    .max(200, "Subject must be less than 200 characters"),
+  message: z.string()
+    .trim()
+    .min(1, "Message is required")
+    .max(2000, "Message must be less than 2000 characters")
+});
 
 export default function Contact() {
   const [loading, setLoading] = useState(false);
@@ -32,9 +56,18 @@ export default function Contact() {
     setLoading(true);
 
     try {
+      // Validate input
+      const validatedData = contactSchema.parse(formData);
+
       const { error } = await supabase
         .from('contact_messages')
-        .insert([formData]);
+        .insert([{
+          name: validatedData.name,
+          email: validatedData.email,
+          phone: validatedData.phone || '',
+          subject: validatedData.subject,
+          message: validatedData.message
+        }]);
 
       if (error) throw error;
 
@@ -51,12 +84,19 @@ export default function Contact() {
         message: ''
       });
     } catch (error) {
-      console.error('Error sending message:', error);
-      toast({
-        title: "Error",
-        description: "Failed to send message. Please try again.",
-        variant: "destructive",
-      });
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Validation Error",
+          description: error.errors[0].message,
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to send message. Please try again.",
+          variant: "destructive",
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -149,6 +189,7 @@ export default function Contact() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
+                        maxLength={100}
                         placeholder="Your full name"
                       />
                     </div>
@@ -161,6 +202,7 @@ export default function Contact() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        maxLength={255}
                         placeholder="your@email.com"
                       />
                     </div>
@@ -175,6 +217,7 @@ export default function Contact() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleInputChange}
+                        maxLength={20}
                         placeholder="+977-xxxxxxxxxx"
                       />
                     </div>
@@ -187,6 +230,7 @@ export default function Contact() {
                         value={formData.subject}
                         onChange={handleInputChange}
                         required
+                        maxLength={200}
                         placeholder="Message subject"
                       />
                     </div>
@@ -200,6 +244,7 @@ export default function Contact() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
+                      maxLength={2000}
                       rows={6}
                       placeholder="Your message..."
                       className="resize-none"

@@ -231,7 +231,9 @@ export default function AdminMessages() {
                   <Button
                     variant="outline"
                     onClick={() => {
-                      window.open(`mailto:${selectedMessage.email}?subject=Re: ${selectedMessage.subject}`);
+                      const safeEmail = encodeURIComponent(selectedMessage.email);
+                      const safeSubject = encodeURIComponent(`Re: ${selectedMessage.subject}`);
+                      window.open(`mailto:${safeEmail}?subject=${safeSubject}`, '_blank', 'noopener,noreferrer');
                     }}
                   >
                     Reply via Email

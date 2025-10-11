@@ -410,7 +410,11 @@ export default function AdminResults() {
                   <Button 
                     variant="outline" 
                     size="sm" 
-                    onClick={() => window.open(result.file_url, '_blank')}
+                    onClick={() => {
+                      if (result.file_url) {
+                        window.open(result.file_url, '_blank', 'noopener,noreferrer');
+                      }
+                    }}
                   >
                     <ExternalLink className="h-4 w-4" />
                   </Button>
