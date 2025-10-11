@@ -56,7 +56,10 @@ export function WelcomePopup() {
         }
       }
     } catch (error) {
-      console.error('Error fetching welcome popup:', error);
+      // Silently handle error when no popup is configured
+      if (error && typeof error === 'object' && 'code' in error && error.code !== 'PGRST116') {
+        console.error('Error fetching welcome popup:', error);
+      }
     }
   };
 

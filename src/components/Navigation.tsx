@@ -29,12 +29,13 @@ export function Navigation() {
       </div>
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex h-16 items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
+          <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
-              <img src={logo} alt="Champion English School Logo" className="h-12 w-12 object-contain relative z-10 group-hover:scale-110 transition-transform duration-300" />
+              <img src={logo} alt="Champion English School Logo" className="h-10 w-10 sm:h-12 sm:w-12 object-contain relative z-10 group-hover:scale-110 transition-transform duration-300" />
             </div>
-            <span className="font-bold text-xl bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300">Champion English School</span>
+            <span className="font-bold text-base sm:text-xl bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300 hidden xs:inline">Champion English School</span>
+            <span className="font-bold text-sm bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300 inline xs:hidden">CES</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -63,29 +64,29 @@ export function Navigation() {
           {/* Mobile Navigation */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-5 w-5" />
+              <Button variant="ghost" size="icon" className="active:scale-95 transition-transform">
+                <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-72">
-              <div className="flex flex-col space-y-4 mt-8">
+            <SheetContent side="right" className="w-80">
+              <div className="flex flex-col space-y-2 mt-8">
                 {navItems.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsOpen(false)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:text-primary ${
+                    className={`px-4 py-3 rounded-lg text-base font-medium transition-all active:scale-95 ${
                       location.pathname === item.href
-                        ? "text-primary bg-muted"
-                        : "text-muted-foreground"
+                        ? "text-primary bg-gradient-to-r from-blue-500/10 to-orange-500/10 shadow-md"
+                        : "text-muted-foreground hover:text-primary hover:bg-muted/50"
                     }`}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <Button asChild variant="outline" size="sm" className="self-start">
+                <Button asChild variant="outline" size="default" className="self-start mt-4 bg-gradient-to-r from-blue-500 to-orange-500 text-white border-0 active:scale-95">
                   <Link to="/admin" onClick={() => setIsOpen(false)}>
-                    Admin
+                    Admin Panel
                   </Link>
                 </Button>
               </div>

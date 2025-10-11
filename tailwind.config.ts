@@ -18,7 +18,13 @@ export default {
 			}
 		},
 		extend: {
+			screens: {
+				'xs': '475px',
+			},
 			colors: {
+				'school-blue': 'hsl(var(--school-blue))',
+				'school-orange': 'hsl(var(--school-orange))',
+				'school-green': 'hsl(var(--school-green))',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

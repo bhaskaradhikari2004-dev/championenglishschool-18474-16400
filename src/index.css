@@ -273,7 +273,7 @@ All colors MUST be HSL.
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-  animation: pieceShatter 2.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: pieceShatter 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   transform-origin: center center;
   --tx: 0px;
   --ty: 0px;
@@ -283,7 +283,7 @@ All colors MUST be HSL.
 
 @media (max-width: 768px) {
   .crack-piece {
-    animation-duration: 2s;
+    animation-duration: 0.6s;
   }
 }
 
@@ -301,8 +301,8 @@ All colors MUST be HSL.
 .crack-piece:nth-child(12) { --tx: 50vw; --ty: 120vh; --rotate: 40deg; clip-path: polygon(70% 85%, 100% 85%, 100% 100%, 65% 100%); }
 
 .page-entering .page-content {
-  animation: pasteIn 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 2s;
+  animation: pasteIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.4s;
   transform-style: preserve-3d;
   perspective: 1000px;
   will-change: transform, opacity;
@@ -310,9 +310,18 @@ All colors MUST be HSL.
 
 @media (max-width: 768px) {
   .page-entering .page-content {
-    animation-duration: 2.5s;
-    animation-delay: 1.5s;
+    animation-duration: 0.6s;
+    animation-delay: 0.3s;
     perspective: 800px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  .crack-piece,
+  .page-entering .page-content {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
   }
 }
 
