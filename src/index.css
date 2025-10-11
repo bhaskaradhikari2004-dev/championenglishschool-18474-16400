@@ -273,7 +273,7 @@ All colors MUST be HSL.
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-  animation: pieceShatter 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: pieceShatter 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   transform-origin: center center;
   --tx: 0px;
   --ty: 0px;
@@ -294,7 +294,8 @@ All colors MUST be HSL.
 .crack-piece:nth-child(12) { --tx: 50vw; --ty: 120vh; --rotate: 40deg; clip-path: polygon(70% 85%, 100% 85%, 100% 100%, 65% 100%); }
 
 .page-entering .page-content {
-  animation: pasteIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation: pasteIn 1.1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: 0.3s;
   transform-style: preserve-3d;
   perspective: 1000px;
 }

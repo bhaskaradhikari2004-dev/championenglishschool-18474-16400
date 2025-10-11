@@ -9,7 +9,7 @@ export const usePageTransition = () => {
     setIsAnimating(true);
     const timer = setTimeout(() => {
       setIsAnimating(false);
-    }, 100);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, [location.pathname]);
