@@ -203,7 +203,7 @@ All colors MUST be HSL.
 @keyframes pasteIn {
   0% {
     opacity: 0;
-    transform: scale(0.95) translateY(20px);
+    transform: scale(0.98) translateY(10px);
   }
   100% {
     opacity: 1;
@@ -214,13 +214,11 @@ All colors MUST be HSL.
 @keyframes pieceShatter {
   0% {
     opacity: 1;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    transform: translate(0, 0) rotate(0deg) scale(1);
+    transform: translate(0, 0) scale(1);
   }
   100% {
     opacity: 0;
-    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
-    transform: translate(var(--tx), var(--ty)) rotate(var(--rotate)) scale(0.5);
+    transform: translate(var(--tx), var(--ty)) scale(0.3);
   }
 }
 
@@ -266,47 +264,24 @@ All colors MUST be HSL.
   width: 100%;
   height: 100%;
   background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--accent)) 100%);
-  animation: pieceShatter 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  animation: pieceShatter 0.4s ease-out forwards;
   transform-origin: center center;
   --tx: 0px;
   --ty: 0px;
-  --rotate: 0deg;
   will-change: transform, opacity;
 }
 
-@media (max-width: 768px) {
-  .crack-piece {
-    animation-duration: 0.6s;
-  }
-}
-
-.crack-piece:nth-child(1) { --tx: -100vw; --ty: -100vh; --rotate: -45deg; clip-path: polygon(0 0, 33% 0, 25% 33%, 0 25%); }
-.crack-piece:nth-child(2) { --tx: 0; --ty: -120vh; --rotate: 20deg; clip-path: polygon(33% 0, 66% 0, 60% 33%, 25% 33%); }
-.crack-piece:nth-child(3) { --tx: 100vw; --ty: -100vh; --rotate: 45deg; clip-path: polygon(66% 0, 100% 0, 100% 25%, 60% 33%); }
-.crack-piece:nth-child(4) { --tx: -120vw; --ty: 0; --rotate: -30deg; clip-path: polygon(0 25%, 25% 33%, 20% 66%, 0 60%); }
-.crack-piece:nth-child(5) { --tx: 20vw; --ty: -20vh; --rotate: 15deg; clip-path: polygon(25% 33%, 60% 33%, 55% 55%, 30% 60%); }
-.crack-piece:nth-child(6) { --tx: 120vw; --ty: 0; --rotate: 30deg; clip-path: polygon(60% 33%, 100% 25%, 100% 60%, 65% 55%); }
-.crack-piece:nth-child(7) { --tx: -100vw; --ty: 20vh; --rotate: -60deg; clip-path: polygon(0 60%, 20% 66%, 15% 90%, 0 85%); }
-.crack-piece:nth-child(8) { --tx: -30vw; --ty: 30vh; --rotate: 25deg; clip-path: polygon(20% 66%, 55% 55%, 50% 85%, 25% 90%); }
-.crack-piece:nth-child(9) { --tx: 30vw; --ty: 30vh; --rotate: -25deg; clip-path: polygon(55% 55%, 65% 55%, 70% 85%, 50% 85%); }
-.crack-piece:nth-child(10) { --tx: 100vw; --ty: 20vh; --rotate: 60deg; clip-path: polygon(65% 55%, 100% 60%, 100% 85%, 70% 85%); }
-.crack-piece:nth-child(11) { --tx: -50vw; --ty: 120vh; --rotate: -40deg; clip-path: polygon(0 85%, 25% 90%, 35% 100%, 0 100%); }
-.crack-piece:nth-child(12) { --tx: 50vw; --ty: 120vh; --rotate: 40deg; clip-path: polygon(70% 85%, 100% 85%, 100% 100%, 65% 100%); }
+.crack-piece:nth-child(1) { --tx: -80vw; --ty: -80vh; clip-path: polygon(0 0, 50% 0, 33% 50%, 0 50%); }
+.crack-piece:nth-child(2) { --tx: 80vw; --ty: -80vh; clip-path: polygon(50% 0, 100% 0, 100% 50%, 66% 50%); }
+.crack-piece:nth-child(3) { --tx: -80vw; --ty: 0; clip-path: polygon(0 50%, 33% 50%, 25% 100%, 0 100%); }
+.crack-piece:nth-child(4) { --tx: 0; --ty: -40vh; clip-path: polygon(33% 50%, 66% 50%, 60% 75%, 40% 75%); }
+.crack-piece:nth-child(5) { --tx: 80vw; --ty: 0; clip-path: polygon(66% 50%, 100% 50%, 100% 100%, 75% 100%); }
+.crack-piece:nth-child(6) { --tx: 0; --ty: 80vh; clip-path: polygon(25% 100%, 75% 100%, 66% 50%, 33% 50%); }
 
 .page-entering .page-content {
-  animation: pasteIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  animation-delay: 0.4s;
-  transform-style: preserve-3d;
-  perspective: 1000px;
+  animation: pasteIn 0.3s ease-out forwards;
+  animation-delay: 0.2s;
   will-change: transform, opacity;
-}
-
-@media (max-width: 768px) {
-  .page-entering .page-content {
-    animation-duration: 0.6s;
-    animation-delay: 0.3s;
-    perspective: 800px;
-  }
 }
 
 /* Reduce motion for users who prefer it */

@@ -22,11 +22,7 @@ export function Navigation() {
   const location = useLocation();
 
   return (
-    <nav className="bg-gradient-to-r from-background via-blue-50/30 to-orange-50/30 dark:from-background dark:via-blue-950/20 dark:to-orange-950/20 backdrop-blur-xl supports-[backdrop-filter]:bg-background/80 sticky top-0 z-50 w-full border-b-2 border-gradient-to-r from-blue-500/20 via-orange-500/20 to-blue-500/20 shadow-lg">
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -top-10 -right-10 w-40 h-40 bg-orange-500/10 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-      </div>
+    <nav className="bg-gradient-to-r from-background via-blue-50/30 to-orange-50/30 dark:from-background dark:via-blue-950/20 dark:to-orange-950/20 backdrop-blur-sm supports-[backdrop-filter]:bg-background/80 sticky top-0 z-50 w-full border-b border-border shadow-md">
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex h-16 items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 sm:space-x-3 group">
@@ -34,8 +30,7 @@ export function Navigation() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-orange-500 rounded-full blur-md opacity-0 group-hover:opacity-50 transition-opacity duration-500"></div>
               <img src={logo} alt="Champion English School Logo" className="h-10 w-10 sm:h-12 sm:w-12 object-contain relative z-10 group-hover:scale-110 transition-transform duration-300" />
             </div>
-            <span className="font-bold text-base sm:text-xl bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300 hidden xs:inline">Champion English School</span>
-            <span className="font-bold text-sm bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300 inline xs:hidden">CES</span>
+            <span className="font-bold text-sm sm:text-base md:text-xl bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent group-hover:from-blue-700 group-hover:to-orange-700 transition-all duration-300">Champion English School</span>
           </Link>
 
           {/* Desktop Navigation */}

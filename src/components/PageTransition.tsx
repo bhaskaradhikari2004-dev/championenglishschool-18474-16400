@@ -11,7 +11,7 @@ export function PageTransition({ children }: PageTransitionProps) {
     <div className={`page-transition-wrapper ${isAnimating ? 'page-entering' : 'page-entered'}`}>
       {/* Cracking overlay effect */}
       <div className="crack-overlay">
-        {[...Array(12)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div 
             key={i} 
             className="crack-piece"
