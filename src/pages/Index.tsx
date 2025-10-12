@@ -82,61 +82,77 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroAnim.ref}
-        className="relative bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground py-8 md:py-12 lg:py-16 overflow-hidden"
+        className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-orange-500 text-white py-12 md:py-20 lg:py-24 overflow-hidden"
       >
-        {/* Animated background elements with 3D effect */}
-        <div className="absolute inset-0 overflow-hidden transform-3d">
-          <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
-          <div className="absolute top-20 right-[10%] w-8 h-8 md:w-20 md:h-20 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-sm"></div>
-          <div className="absolute bottom-20 left-[15%] w-6 h-6 md:w-16 md:h-16 bg-white/10 rounded-full animate-float animation-delay-400 blur-sm"></div>
-          <div className="absolute top-1/2 right-[20%] w-10 h-10 md:w-20 md:h-20 bg-accent/20 rounded-full animate-pulse animation-delay-600 blur-md"></div>
-          <div className="absolute bottom-32 right-[8%] w-8 h-8 md:w-16 md:h-16 bg-white/15 rounded-full animate-float animation-delay-800 blur-sm"></div>
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-shimmer"></div>
+        {/* Animated background elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-10 left-[5%] w-16 h-16 md:w-32 md:h-32 bg-white/10 rounded-full animate-float blur-xl"></div>
+          <div className="absolute top-20 right-[10%] w-12 h-12 md:w-24 md:h-24 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-xl"></div>
+          <div className="absolute bottom-20 left-[15%] w-10 h-10 md:w-20 md:h-20 bg-white/10 rounded-full animate-float animation-delay-400 blur-xl"></div>
+          <div className="absolute top-1/2 right-[20%] w-14 h-14 md:w-28 md:h-28 bg-orange-400/20 rounded-full animate-pulse animation-delay-600 blur-2xl"></div>
+          <div className="absolute bottom-32 right-[8%] w-12 h-12 md:w-24 md:h-24 bg-white/15 rounded-full animate-float animation-delay-800 blur-xl"></div>
+          {/* Grid pattern overlay */}
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
         </div>
         
-        <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 transform-3d ${
+        <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 ${
           heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <div className="flex justify-center mb-2 md:mb-3">
-            <div className="relative transform-3d">
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent to-white/30 rounded-full blur-2xl animate-pulse animation-delay-400 opacity-50"></div>
-              <GraduationCap className="h-8 w-8 md:h-14 md:w-14 relative animate-bounce-gentle drop-shadow-2xl" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 md:h-5 md:w-5 animate-pulse text-accent-foreground drop-shadow-lg" />
-              <Sparkles className="absolute -bottom-1 -left-1 h-2.5 w-2.5 md:h-4 md:w-4 animate-pulse animation-delay-600 text-white/90 drop-shadow-lg" />
+          <div className="flex justify-center mb-4 md:mb-6">
+            <div className="relative">
+              <div className="absolute inset-0 bg-white/30 rounded-full blur-2xl animate-pulse"></div>
+              <div className="bg-white/10 backdrop-blur-sm rounded-full p-4 md:p-6 relative border border-white/20">
+                <GraduationCap className="h-12 w-12 md:h-16 md:w-16 relative drop-shadow-2xl" />
+                <Sparkles className="absolute -top-2 -right-2 h-5 w-5 md:h-6 md:w-6 animate-pulse text-yellow-300" />
+                <Sparkles className="absolute -bottom-2 -left-2 h-4 w-4 md:h-5 md:w-5 animate-pulse animation-delay-600 text-yellow-300" />
+              </div>
             </div>
           </div>
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 transition-all duration-1000 delay-200 tracking-tight leading-tight ${
+          <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 md:mb-4 transition-all duration-1000 delay-200 tracking-tight leading-tight drop-shadow-lg ${
             heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
           }`}>
             Champion English School
           </h1>
-          <p className={`text-sm sm:text-base md:text-lg mb-2 md:mb-3 opacity-90 flex items-center justify-center gap-1.5 transition-all duration-1000 delay-300 ${
+          <p className={`text-base sm:text-lg md:text-xl mb-3 md:mb-4 flex items-center justify-center gap-2 transition-all duration-1000 delay-300 ${
             heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
           }`}>
-            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">Sayapatri Margha, Dharan-15, Nepal</span>
+            <MapPin className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+            <span className="text-sm sm:text-base md:text-lg">Sayapatri Margha, Dharan-15, Nepal</span>
           </p>
-          <p className={`text-xs sm:text-sm md:text-base mb-4 md:mb-5 opacity-80 max-w-2xl mx-auto font-medium transition-all duration-1000 delay-500 ${
+          <p className={`text-base sm:text-lg md:text-xl mb-6 md:mb-8 max-w-3xl mx-auto font-medium transition-all duration-1000 delay-500 ${
             heroAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
             ✨ Unleashing the Champion within everyone ✨
           </p>
-          <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
+          
+          {/* Stats Section */}
+          <div className={`grid grid-cols-3 gap-4 md:gap-8 max-w-3xl mx-auto mb-8 md:mb-10 transition-all duration-1000 delay-600 ${
+            heroAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+          }`}>
+            {[
+              { number: '500+', label: 'Students' },
+              { number: '15+', label: 'Years' },
+              { number: '50+', label: 'Teachers' }
+            ].map((stat, index) => (
+              <div key={stat.label} className="bg-white/10 backdrop-blur-sm rounded-xl p-3 md:p-4 border border-white/20 hover:bg-white/20 transition-all duration-300">
+                <div className="text-2xl md:text-4xl font-bold mb-1">{stat.number}</div>
+                <div className="text-xs md:text-sm opacity-90">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+          <div className={`flex flex-col sm:flex-row gap-3 md:gap-4 justify-center px-4 transition-all duration-1000 delay-800 ${
             heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
-              <Link to="/about" className="relative z-10">
-                <span className="relative z-10">Learn More</span>
-                <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
-                <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            <Button asChild size="lg" className="group shadow-2xl h-12 text-base relative overflow-hidden bg-white text-blue-600 hover:bg-white/90">
+              <Link to="/about">
+                <span className="relative z-10 font-semibold">Discover Our Story</span>
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
-            <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
+            <Button asChild size="lg" variant="outline" className="bg-white/10 border-2 border-white/30 text-white hover:bg-white/20 shadow-2xl backdrop-blur-sm h-12 text-base group">
               <Link to="/contact">
-                <span className="relative z-10">Contact Us</span>
-                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                <Phone className="h-4 w-4 mr-2" />
+                <span className="font-semibold">Get in Touch</span>
               </Link>
             </Button>
           </div>
