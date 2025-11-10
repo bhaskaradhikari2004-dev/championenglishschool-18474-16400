@@ -81,21 +81,35 @@ export function WelcomePopup() {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-4xl p-0 overflow-hidden border-0">
+      <DialogContent className="max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-0 overflow-hidden border-0">
         <div className="relative w-full">
-          <img
-            src={currentImage.image_url}
-            alt={`Welcome Banner ${currentIndex + 1}`}
-            className="w-full h-auto object-contain max-h-[80vh]"
-          />
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet={currentImage.image_url}
+              width="640"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet={currentImage.image_url}
+              width="1024"
+            />
+            <img
+              src={currentImage.image_url}
+              alt={`Welcome Banner ${currentIndex + 1}`}
+              className="w-full h-auto object-contain max-h-[85vh] sm:max-h-[80vh] md:max-h-[75vh]"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
           {images.length > 1 && (
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+            <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex gap-1.5 sm:gap-2 bg-black/30 backdrop-blur-sm px-3 py-1.5 rounded-full">
               {images.map((_, index) => (
                 <div
                   key={index}
-                  className={`h-2 w-2 rounded-full transition-all ${
+                  className={`h-1.5 sm:h-2 w-1.5 sm:w-2 rounded-full transition-all ${
                     index === currentIndex
-                      ? 'bg-white w-6'
+                      ? 'bg-white w-4 sm:w-6'
                       : index < currentIndex
                       ? 'bg-white/50'
                       : 'bg-white/30'

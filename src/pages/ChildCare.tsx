@@ -29,12 +29,26 @@ export default function ChildCare() {
   return (
     <Layout>
       <Dialog open={showBanner} onOpenChange={setShowBanner}>
-        <DialogContent className="max-w-4xl p-0">
-          <img 
-            src={childcareBanner} 
-            alt="Champion Child Care Centre" 
-            className="w-full h-auto rounded-lg"
-          />
+        <DialogContent className="max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-0 overflow-hidden border-0">
+          <picture>
+            <source
+              media="(max-width: 640px)"
+              srcSet={childcareBanner}
+              width="640"
+            />
+            <source
+              media="(max-width: 1024px)"
+              srcSet={childcareBanner}
+              width="1024"
+            />
+            <img 
+              src={childcareBanner} 
+              alt="Champion Child Care Centre" 
+              className="w-full h-auto object-contain max-h-[85vh] sm:max-h-[80vh] md:max-h-[75vh] rounded-lg"
+              loading="eager"
+              decoding="async"
+            />
+          </picture>
         </DialogContent>
       </Dialog>
       <div className="container mx-auto px-4 py-12">
@@ -53,18 +67,20 @@ export default function ChildCare() {
           <img 
             src={childcareClassroom} 
             alt="Champion Child Care Classroom" 
-            className="w-full h-[400px] object-cover"
+            className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
+            loading="lazy"
           />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 mb-12">
           {/* About Section */}
           <Card className="overflow-hidden">
-            <div className="h-48 overflow-hidden">
+            <div className="h-40 sm:h-48 md:h-56 overflow-hidden">
               <img 
                 src={childcareActivities} 
                 alt="Children Learning Activities" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <CardContent className="pt-6">
@@ -103,11 +119,12 @@ export default function ChildCare() {
 
           {/* Daycare Package Details */}
           <Card className="bg-primary/5 overflow-hidden">
-            <div className="h-48 overflow-hidden">
+            <div className="h-40 sm:h-48 md:h-56 overflow-hidden">
               <img 
                 src={childcareMeals} 
                 alt="Nutritious Meals for Children" 
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
             <CardContent className="pt-6">
