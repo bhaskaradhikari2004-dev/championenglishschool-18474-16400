@@ -2,7 +2,7 @@ name: Keep Supabase Alive (Leadership Table)
 
 on:
   schedule:
-    - cron: '0 0 */2 * *'  # runs every 2 days at midnight UTC
+    - cron: '0 0 * * *'  # runs once daily at midnight UTC
   workflow_dispatch:        # allows manual run
 
 jobs:
@@ -12,17 +12,19 @@ jobs:
     steps:
       - name: Ping Supabase (Leadership Table)
         run: |
-          echo "👑 Pinging Supabase (Leadership Table) to keep it awake..."
+          echo "📡 Writing keepalive log to Supabase..."
 
-          # Ping the 'leadership' table
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
-            "https://qgbbmbgghwnzozlmluuw.supabase.co/rest/v1/leadership?select=id&limit=1" \
+            -X POST "https://qgbbmbgghwnzozlmluuw.supabase.co/rest/v1/keepalive_log" \
             -H "apikey: ${{ secrets.SUPABASE_SERVICE_KEY_LEADERSHIP }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_KEY_LEADERSHIP }}" \
-            -H "Content-Type: application/json")
+            -H "Content-Type: application/json" \
+            -d "{\"timestamp\":\"$TIMESTAMP\",\"source\":\"github_action\"}")
 
-          if [ "$RESPONSE" -eq 200 ]; then
-            echo "✅ Supabase (Leadership Table) is awake and responding successfully!"
+          if [ "$RESPONSE" -eq 201 ]; then
+            echo "✅ Supabase keepalive ping successful!"
           else
             echo "⚠️ Supabase ping failed. HTTP status: $RESPONSE"
             exit 1
