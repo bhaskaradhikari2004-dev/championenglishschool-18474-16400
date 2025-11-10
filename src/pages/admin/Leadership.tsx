@@ -8,11 +8,12 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
-import { Plus, Edit, Trash2, Users, Eye, EyeOff, ArrowUp, ArrowDown } from 'lucide-react';
+import { Plus, Edit, Trash2, Users, Eye, EyeOff, ArrowUp, ArrowDown, Check } from 'lucide-react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { useAuth } from '@/contexts/AuthContext';
 import { FileUpload } from '@/components/ui/file-upload';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
 interface LeadershipMember {
   id: string;
@@ -26,8 +27,16 @@ interface LeadershipMember {
   updated_at: string;
 }
 
+interface GalleryImage {
+  id: string;
+  title: string;
+  image_url: string;
+  category: string;
+}
+
 export default function AdminLeadership() {
   const [members, setMembers] = useState<LeadershipMember[]>([]);
+  const [galleryImages, setGalleryImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingMember, setEditingMember] = useState<LeadershipMember | null>(null);
@@ -40,12 +49,14 @@ export default function AdminLeadership() {
     display_order: 1,
   });
   const [uploadTab, setUploadTab] = useState('url');
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<string>('');
   
   const { toast } = useToast();
   const { user } = useAuth();
 
   useEffect(() => {
     fetchMembers();
+    fetchGalleryImages();
   }, []);
 
   const fetchMembers = async () => {
@@ -66,6 +77,20 @@ export default function AdminLeadership() {
       });
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchGalleryImages = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('gallery')
+        .select('id, title, image_url, category')
+        .order('created_at', { ascending: false });
+      
+      if (error) throw error;
+      setGalleryImages(data || []);
+    } catch (error) {
+      console.error('Error fetching gallery images:', error);
     }
   };
 
@@ -329,9 +354,10 @@ export default function AdminLeadership() {
               {/* Profile Image Source Selection */}
               {!editingMember && (
                 <Tabs value={uploadTab} onValueChange={setUploadTab}>
-                  <TabsList className="grid w-full grid-cols-2">
+                  <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="url">Image URL</TabsTrigger>
                     <TabsTrigger value="upload">Upload Image</TabsTrigger>
+                    <TabsTrigger value="gallery">From Gallery</TabsTrigger>
                   </TabsList>
                   
                   <TabsContent value="url" className="space-y-4">
@@ -364,6 +390,50 @@ export default function AdminLeadership() {
                         });
                       }}
                     />
+                  </TabsContent>
+
+                  <TabsContent value="gallery" className="space-y-4">
+                    <div className="space-y-2">
+                      <Label>Select Image from Gallery</Label>
+                      <ScrollArea className="h-[300px] border rounded-lg p-4">
+                        <div className="grid grid-cols-3 gap-3">
+                          {galleryImages.length > 0 ? (
+                            galleryImages.map((image) => (
+                              <div
+                                key={image.id}
+                                className={`relative cursor-pointer rounded-lg overflow-hidden border-2 transition-all ${
+                                  selectedGalleryImage === image.image_url
+                                    ? 'border-primary ring-2 ring-primary'
+                                    : 'border-border hover:border-primary/50'
+                                }`}
+                                onClick={() => {
+                                  setSelectedGalleryImage(image.image_url);
+                                  setFormData({ ...formData, image_url: image.image_url });
+                                }}
+                              >
+                                <img
+                                  src={image.image_url}
+                                  alt={image.title}
+                                  className="w-full h-24 object-cover"
+                                />
+                                {selectedGalleryImage === image.image_url && (
+                                  <div className="absolute inset-0 bg-primary/20 flex items-center justify-center">
+                                    <Check className="h-8 w-8 text-primary bg-background rounded-full p-1" />
+                                  </div>
+                                )}
+                                <div className="absolute bottom-0 left-0 right-0 bg-black/60 p-1">
+                                  <p className="text-white text-xs truncate">{image.title}</p>
+                                </div>
+                              </div>
+                            ))
+                          ) : (
+                            <div className="col-span-3 text-center py-8 text-muted-foreground">
+                              No images in gallery
+                            </div>
+                          )}
+                        </div>
+                      </ScrollArea>
+                    </div>
                   </TabsContent>
                 </Tabs>
               )}
@@ -404,8 +474,8 @@ export default function AdminLeadership() {
                 </div>
               </div>
               
-              {/* Only show submit button for URL uploads or editing */}
-              {(editingMember || uploadTab === 'url') && (
+              {/* Only show submit button for URL uploads, gallery selection, or editing */}
+              {(editingMember || uploadTab === 'url' || uploadTab === 'gallery') && (
                 <div className="flex justify-end space-x-2">
                   <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
                     Cancel
