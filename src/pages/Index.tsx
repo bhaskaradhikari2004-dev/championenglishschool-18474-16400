@@ -503,15 +503,15 @@ const Index = () => {
                   </div>
                   <p className="text-xs md:text-sm text-white/90">Sunday - Friday: 8:00 AM - 5:00 PM</p>
                 </div>
-                <div className="space-y-2">
-                  <Button asChild className="w-full group h-10 text-sm active:scale-95" variant="secondary">
-                    <Link to="/childcare">
+                <div className="space-y-2 pointer-events-auto relative z-20">
+                  <Button asChild className="w-full group h-10 text-sm active:scale-95 pointer-events-auto" variant="secondary">
+                    <Link to="/childcare" className="pointer-events-auto">
                       Learn More About Child Care
                       <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" className="w-full bg-white/20 border-white/30 text-white hover:bg-white/30 h-10 text-sm active:scale-95">
-                    <a href="tel:9814350277">
+                  <Button asChild variant="outline" className="w-full bg-white/20 border-white/30 text-white hover:bg-white/30 h-10 text-sm active:scale-95 pointer-events-auto">
+                    <a href="tel:9814350277" className="pointer-events-auto">
                       <Phone className="h-3.5 w-3.5 mr-2" />
                       Call Now
                     </a>
