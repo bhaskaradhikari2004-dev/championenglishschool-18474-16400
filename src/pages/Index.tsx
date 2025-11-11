@@ -523,52 +523,117 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section - Compact & Elegant */}
+      {/* Contact Section - Modern & Elegant */}
       <section 
         ref={contactAnim.ref}
-        className="py-6 md:py-10 bg-gradient-to-br from-muted/30 via-blue-50/20 to-orange-50/20 dark:from-muted/30 dark:via-blue-950/10 dark:to-orange-950/10 relative overflow-hidden"
+        className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-blue-950/20 dark:via-gray-900 dark:to-orange-950/20 relative overflow-hidden"
       >
+        {/* Animated background elements */}
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-0 left-1/4 w-48 h-48 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+          <div className="absolute top-10 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-orange-500 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400 to-orange-400 rounded-full blur-3xl animate-pulse animation-delay-600"></div>
         </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer"></div>
+        
         <div className="container mx-auto px-4 relative z-10">
-          <div className={`max-w-4xl mx-auto transition-all duration-1000 transform-3d ${
+          <div className={`max-w-5xl mx-auto transition-all duration-1000 transform-3d ${
             contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-lg md:text-xl font-bold text-center mb-4 md:mb-5 bg-gradient-to-r from-blue-600 to-orange-600 bg-clip-text text-transparent">Get in Touch</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              {[
-                { icon: MapPin, title: 'Visit', text: 'Sayapatri Margha, Dharan-15', color: 'blue' },
-                { icon: Phone, title: 'Call', text: '+977-025-530302', color: 'orange' },
-                { icon: Clock, title: 'Hours', text: 'Sun - Fri: 6AM - 5PM', color: 'blue' }
-              ].map((item, index) => (
-                <div 
-                  key={item.title}
-                  className={`flex items-center gap-2.5 p-3 rounded-lg bg-card hover:shadow-lg transition-all duration-500 active:scale-95 border border-transparent hover:border-${item.color}-500/20 group relative overflow-hidden ${
-                    contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
-                  }`}
-                  style={{ transitionDelay: `${index * 100}ms` }}
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br from-${item.color}-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                  <div className={`p-2 rounded-full bg-${item.color}-500/10 group-hover:scale-110 transition-transform duration-300`}>
-                    <item.icon className={`h-4 w-4 text-${item.color}-600 flex-shrink-0`} />
-                  </div>
-                  <div className="min-w-0 relative z-10">
-                    <p className="text-xs font-semibold">{item.title}</p>
-                    <p className="text-xs text-muted-foreground truncate">{item.text}</p>
-                  </div>
-                </div>
-              ))}
+            <div className="text-center mb-8 md:mb-10">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-primary to-orange-600 bg-clip-text text-transparent">
+                Get in Touch
+              </h2>
+              <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+                We're here to answer your questions and help you get started
+              </p>
             </div>
-            <div className={`text-center mt-4 transition-all duration-1000 delay-300 ${
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+              {/* Visit Card */}
+              <Card 
+                className={`group relative overflow-hidden border-2 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover-scale ${
+                  contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: '100ms' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
+                <CardHeader className="text-center pb-3">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
+                    <MapPin className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-base md:text-lg mb-1">Visit Us</CardTitle>
+                  <CardDescription className="text-xs md:text-sm">Come see our campus</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-sm md:text-base font-medium">Sayapatri Margha</p>
+                  <p className="text-sm md:text-base font-medium">Dharan-15, Nepal</p>
+                </CardContent>
+              </Card>
+
+              {/* Call Card - Clickable */}
+              <a 
+                href="tel:+977025530302"
+                className={`block transition-all duration-500 hover-scale ${
+                  contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: '200ms' }}
+              >
+                <Card className="group relative overflow-hidden border-2 hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl h-full cursor-pointer bg-gradient-to-br from-orange-500 to-amber-600 text-white">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-transparent to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                  <CardHeader className="text-center pb-3 relative z-10">
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg group-hover:bg-white/30">
+                      <Phone className="h-8 w-8 text-white" />
+                    </div>
+                    <CardTitle className="text-base md:text-lg mb-1 text-white flex items-center justify-center gap-2">
+                      <Sparkles className="h-4 w-4" />
+                      Call Us Now
+                      <Sparkles className="h-4 w-4" />
+                    </CardTitle>
+                    <CardDescription className="text-xs md:text-sm text-white/90">Tap to call directly</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center relative z-10">
+                    <p className="text-lg md:text-xl font-bold text-white group-hover:scale-105 transition-transform duration-300">
+                      +977-025-530302
+                    </p>
+                    <p className="text-xs md:text-sm text-white/80 mt-2">Available during office hours</p>
+                  </CardContent>
+                </Card>
+              </a>
+
+              {/* Hours Card */}
+              <Card 
+                className={`group relative overflow-hidden border-2 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover-scale ${
+                  contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+                style={{ transitionDelay: '300ms' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
+                <CardHeader className="text-center pb-3">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
+                    <Clock className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <CardTitle className="text-base md:text-lg mb-1">Office Hours</CardTitle>
+                  <CardDescription className="text-xs md:text-sm">We're here to help</CardDescription>
+                </CardHeader>
+                <CardContent className="text-center">
+                  <p className="text-sm md:text-base font-medium">Sunday - Friday</p>
+                  <p className="text-sm md:text-base font-medium">6:00 AM - 5:00 PM</p>
+                </CardContent>
+              </Card>
+            </div>
+            
+            <div className={`text-center transition-all duration-1000 delay-400 ${
               contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
             }`}>
-              <Button asChild size="sm" variant="outline" className="group h-9 text-xs active:scale-95 hover:shadow-lg border-2 hover:border-primary/30 relative overflow-hidden">
+              <Button asChild size="lg" className="group hover:shadow-2xl relative overflow-hidden">
                 <Link to="/contact">
-                  <span className="relative z-10">Contact Us</span>
-                  <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform relative z-10" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-orange-500/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                  <span className="relative z-10">Send us a Message</span>
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-orange-600/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
                 </Link>
               </Button>
             </div>
