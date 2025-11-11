@@ -564,7 +564,7 @@ const Index = () => {
                     <MapPin className="h-8 w-8 text-blue-600" />
                   </div>
                   <CardTitle className="text-base md:text-lg mb-1">Visit Us</CardTitle>
-                  <CardDescription className="text-xs md:text-sm">Come see our campus</CardDescription>
+                  <CardDescription className="text-xs md:text-sm">Come see our school</CardDescription>
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-sm md:text-base font-medium">Sayapatri Margha</p>
@@ -621,7 +621,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-sm md:text-base font-medium">Sunday - Friday</p>
-                  <p className="text-sm md:text-base font-medium">6:00 AM - 5:00 PM</p>
+                  <p className="text-sm md:text-base font-medium">10:00 AM - 4:00 PM</p>
                 </CardContent>
               </Card>
             </div>
