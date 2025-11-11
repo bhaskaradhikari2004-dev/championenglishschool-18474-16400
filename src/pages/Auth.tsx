@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, Link } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2 } from 'lucide-react';
+import { Loader2, ArrowLeft } from 'lucide-react';
 import { PageTransition } from '@/components/PageTransition';
 
 export default function Auth() {
@@ -71,7 +71,14 @@ export default function Auth() {
   return (
     <PageTransition>
       <div className="min-h-screen flex items-center justify-center bg-background p-4">
-        <Card className="w-full max-w-md">
+        <div className="w-full max-w-md space-y-4">
+          <Link to="/">
+            <Button variant="ghost" className="gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Return to Homepage
+            </Button>
+          </Link>
+          <Card className="w-full">
           <CardHeader className="text-center">
             <CardTitle className="text-2xl">
               {isLogin ? 'Admin Login' : 'Admin Signup'}
@@ -146,6 +153,7 @@ export default function Auth() {
             </div>
           </CardContent>
         </Card>
+        </div>
       </div>
     </PageTransition>
   );
