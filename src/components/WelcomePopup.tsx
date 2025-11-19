@@ -98,8 +98,9 @@ export function WelcomePopup() {
               src={currentImage.image_url}
               alt={`Welcome Banner ${currentIndex + 1}`}
               className="w-full h-auto object-contain max-h-[85vh] sm:max-h-[80vh] md:max-h-[75vh]"
-              loading="eager"
+              loading="lazy"
               decoding="async"
+              style={{ willChange: 'transform' }}
             />
           </picture>
           {images.length > 1 && (
