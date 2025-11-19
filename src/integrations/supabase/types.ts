@@ -269,24 +269,6 @@ export type Database = {
         }
         Relationships: []
       }
-      keepalive_log: {
-        Row: {
-          id: number
-          source: string | null
-          timestamp: string | null
-        }
-        Insert: {
-          id?: never
-          source?: string | null
-          timestamp?: string | null
-        }
-        Update: {
-          id?: never
-          source?: string | null
-          timestamp?: string | null
-        }
-        Relationships: []
-      }
       leadership: {
         Row: {
           created_at: string
@@ -480,7 +462,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      is_admin: { Args: { user_id: string }; Returns: boolean }
+      is_admin: {
+        Args: { user_id: string }
+        Returns: boolean
+      }
     }
     Enums: {
       user_role: "admin" | "super_admin"
