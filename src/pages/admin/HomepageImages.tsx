@@ -177,7 +177,7 @@ export default function HomepageImages() {
         <div>
           <h1 className="text-3xl font-bold">Homepage Images</h1>
           <p className="text-muted-foreground">
-            Manage images displayed on the homepage
+            Manage images displayed on the homepage. For About section: Order 1 = Hero image, Order 2 = Academic Excellence, Order 3 = Strong Community, Order 4 = Holistic Development
           </p>
         </div>
 
