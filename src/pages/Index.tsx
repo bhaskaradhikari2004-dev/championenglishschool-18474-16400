@@ -7,10 +7,6 @@ import { Calendar, Bell, Image, Trophy, Users, Phone, GraduationCap, ArrowRight,
 import { WelcomePopup } from "@/components/WelcomePopup";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import aboutStudents from "@/assets/about-students.jpg";
-import aboutExcellence from "@/assets/about-excellence.jpg";
-import aboutCommunity from "@/assets/about-community.jpg";
-import aboutHolistic from "@/assets/about-holistic.jpg";
 
 interface AboutInfo {
   mission: string;
@@ -32,6 +28,17 @@ interface Leader {
 const Index = () => {
   const [aboutInfo, setAboutInfo] = useState<AboutInfo | null>(null);
   const [leaders, setLeaders] = useState<Leader[]>([]);
+  const [aboutImages, setAboutImages] = useState<{
+    hero: string;
+    excellence: string;
+    community: string;
+    holistic: string;
+  }>({
+    hero: '',
+    excellence: '',
+    community: '',
+    holistic: ''
+  });
   
   // Scroll animations
   const heroAnim = useScrollAnimation(0.1);
@@ -43,6 +50,7 @@ const Index = () => {
   useEffect(() => {
     fetchAboutInfo();
     fetchLeaders();
+    fetchAboutImages();
   }, []);
 
   const fetchAboutInfo = async () => {
@@ -72,6 +80,33 @@ const Index = () => {
       if (data) setLeaders(data);
     } catch (error) {
       console.error('Error fetching leaders:', error);
+    }
+  };
+
+  const fetchAboutImages = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('homepage_images')
+        .select('*')
+        .eq('section', 'about')
+        .eq('is_active', true)
+        .order('display_order', { ascending: true });
+      
+      if (error) throw error;
+      
+      if (data && data.length > 0) {
+        // Map images based on display_order
+        // 1: hero, 2: excellence, 3: community, 4: holistic
+        const imageMap = {
+          hero: data.find(img => img.display_order === 1)?.image_url || '',
+          excellence: data.find(img => img.display_order === 2)?.image_url || '',
+          community: data.find(img => img.display_order === 3)?.image_url || '',
+          holistic: data.find(img => img.display_order === 4)?.image_url || ''
+        };
+        setAboutImages(imageMap);
+      }
+    } catch (error) {
+      console.error('Error fetching about images:', error);
     }
   };
 
@@ -278,12 +313,13 @@ const Index = () => {
           <div className={`mb-6 md:mb-8 transition-all duration-1000 delay-200 transform-3d ${
             aboutAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
           }`}>
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group">
-              <img 
-                src={aboutStudents} 
-                alt="Champion English School Students"
-                className="w-full h-36 sm:h-48 md:h-64 lg:h-72 object-cover group-hover:scale-110 transition-transform duration-1000"
-              />
+            {aboutImages.hero && (
+              <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group">
+                <img 
+                  src={aboutImages.hero} 
+                  alt="Champion English School Students"
+                  className="w-full h-36 sm:h-48 md:h-64 lg:h-72 object-cover group-hover:scale-110 transition-transform duration-1000"
+                />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-transparent to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-white">
@@ -295,6 +331,7 @@ const Index = () => {
                 </p>
               </div>
             </div>
+            )}
           </div>
 
           {/* Feature Cards with Images */}
@@ -304,21 +341,21 @@ const Index = () => {
                 icon: Award, 
                 title: 'Academic Excellence', 
                 text: 'Focus on academic excellence with experienced faculty',
-                image: aboutExcellence,
+                image: aboutImages.excellence,
                 delay: 300
               },
               { 
                 icon: Users, 
                 title: 'Strong Community', 
                 text: 'Building a supportive and inclusive learning community',
-                image: aboutCommunity,
+                image: aboutImages.community,
                 delay: 450
               },
               { 
                 icon: Lightbulb, 
                 title: 'Holistic Development', 
                 text: 'Nurturing mind, body, and character for complete growth',
-                image: aboutHolistic,
+                image: aboutImages.holistic,
                 delay: 600
               }
             ].map((item) => (
