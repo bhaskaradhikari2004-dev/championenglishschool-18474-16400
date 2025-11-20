@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Calendar, Bell, Image, Trophy, Users, Phone, GraduationCap, ArrowRight, Sparkles, MapPin, Clock, Target, Eye, Heart, BookOpen, Award, Lightbulb, Baby } from "lucide-react";
+import { Calendar, Bell, Image, Trophy, Users, Phone, GraduationCap, ArrowRight, Sparkles, MapPin, Clock, Target, Eye, Heart, BookOpen, Award, Lightbulb, Baby, Quote } from "lucide-react";
 import { WelcomePopup } from "@/components/WelcomePopup";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
@@ -146,105 +146,92 @@ const Index = () => {
       {/* Leadership Section */}
       <section 
         ref={leadershipAnim.ref}
-        className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-orange-50 to-blue-100 dark:from-blue-950/30 dark:via-orange-950/30 dark:to-blue-900/30 relative overflow-hidden"
+        className="py-6 md:py-10 lg:py-14 bg-background relative overflow-hidden"
       >
-        <div className="absolute inset-0 opacity-10 transform-3d">
-          <div className="absolute top-10 right-10 w-64 h-64 bg-blue-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 left-10 w-64 h-64 bg-orange-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-300 to-orange-300 rounded-full blur-3xl animate-pulse animation-delay-600 opacity-30"></div>
-          {/* Moving gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-100/20 to-transparent animate-shimmer"></div>
-        </div>
         <div className="container mx-auto px-4 relative z-10">
-          <h2 className={`text-2xl md:text-3xl font-bold text-center mb-2 transition-all duration-1000 ${
-            leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            Our Leadership
-          </h2>
-          <p className={`text-center text-sm md:text-base text-muted-foreground mb-6 md:mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-200 ${
-            leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            Meet the dedicated leaders guiding Champion English School toward excellence
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="space-y-12">
             {leaders.length > 0 ? (
               leaders.map((leader, index) => (
-                <Card 
+                <div 
                   key={leader.id} 
-                  className={`text-center hover-scale hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/20 overflow-hidden group transform-3d ${
+                  className={`space-y-6 transition-all duration-1000 ${
                     leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
-                  style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                  style={{ transitionDelay: `${index * 200}ms` }}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 via-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
-                  <CardHeader className="relative">
-                    {leader.image_url ? (
-                      <div className="relative mx-auto mb-3 w-20 h-20 md:w-28 md:h-28">
+                  {/* Section Title */}
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary mb-8">
+                    Message from the {leader.position}
+                  </h2>
+
+                  {/* Content Grid */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
+                    {/* Image Section */}
+                    <div className={`flex justify-center lg:justify-${index % 2 === 0 ? 'end' : 'start'} ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+                      {leader.image_url ? (
                         <img
                           src={leader.image_url}
                           alt={leader.name}
-                          className="w-full h-full rounded-full object-cover border-3 border-primary/20 group-hover:border-primary/40 transition-all duration-500 group-hover:scale-110"
+                          className="w-full max-w-sm lg:max-w-md rounded-3xl object-cover shadow-xl"
                         />
-                        <div className="absolute inset-0 rounded-full bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      ) : (
+                        <div className="w-full max-w-sm lg:max-w-md aspect-square rounded-3xl bg-muted flex items-center justify-center">
+                          <Users className="h-24 w-24 lg:h-32 lg:w-32 text-muted-foreground" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Text Content */}
+                    <div className={`space-y-4 lg:space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                      {/* Quote Mark */}
+                      <Quote className="h-12 w-12 lg:h-16 lg:w-16 text-muted-foreground/30" />
+                      
+                      {/* Message Text */}
+                      <p className="text-base lg:text-lg leading-relaxed text-foreground/80">
+                        {leader.message}
+                      </p>
+
+                      {/* Read More Link */}
+                      <a 
+                        href="/leadership" 
+                        className="inline-flex items-center gap-2 text-[#FFA500] hover:text-[#FF8C00] font-medium transition-colors"
+                      >
+                        Read More →
+                      </a>
+
+                      {/* Name in Script Font */}
+                      <div className="pt-4 space-y-1">
+                        <p className="text-2xl lg:text-3xl font-script text-foreground">
+                          {leader.name}
+                        </p>
+                        <p className="text-base lg:text-lg italic text-foreground/70">
+                          {leader.position}
+                        </p>
                       </div>
-                    ) : (
-                      <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-500">
-                        <Users className="h-10 w-10 md:h-14 md:w-14 text-primary" />
-                      </div>
-                    )}
-                    <CardTitle className="text-sm md:text-lg">{leader.name}</CardTitle>
-                    <p className="text-primary font-semibold text-xs md:text-sm">{leader.position}</p>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-xs md:text-sm text-muted-foreground italic line-clamp-3">
-                      "{leader.message}"
-                    </p>
-                  </CardContent>
-                </Card>
+                    </div>
+                  </div>
+                </div>
               ))
             ) : (
-              <>
-                {[
-                  { name: 'Netra Prasad Subedi', position: 'Director', message: 'Education is about shaping character and building confidence.' },
-                  { name: 'Menuka Adhikari (Naju)', position: 'Principal', message: 'Every child is given the platform to shine and achieve their potential.' },
-                  { name: 'Abeen Rai', position: 'Vice Principal', message: 'We guide students toward excellence and lifelong learning.' }
-                ].map((leader, index) => (
-                  <Card 
-                    key={leader.name}
-                    className={`text-center hover-scale hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/20 overflow-hidden group ${
-                      leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ transitionDelay: `${(index + 1) * 150}ms` }}
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <CardHeader className="relative">
-                      <div className="w-20 h-20 md:w-28 md:h-28 rounded-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-500">
-                        <Users className="h-10 w-10 md:h-14 md:w-14 text-primary" />
-                      </div>
-                      <CardTitle className="text-sm md:text-lg">{leader.name}</CardTitle>
-                      <p className="text-primary font-semibold text-xs md:text-sm">{leader.position}</p>
-                    </CardHeader>
-                    <CardContent>
-                      <p className="text-xs md:text-sm text-muted-foreground italic">
-                        "{leader.message}"
-                      </p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </>
+              <div className="text-center py-8">
+                <p className="text-muted-foreground">No leadership information available.</p>
+              </div>
             )}
           </div>
-          <div className={`text-center mt-4 md:mt-5 transition-all duration-1000 delay-600 ${
-            leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <Button asChild size="sm" className="hover-scale group h-9 text-xs md:text-sm">
-              <Link to="/leadership">
-                Meet Our Full Leadership Team
-                <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </Button>
-          </div>
+
+          {/* View All Button */}
+          {leaders.length > 0 && (
+            <div className={`text-center mt-8 lg:mt-12 transition-all duration-1000 delay-600 ${
+              leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}>
+              <Button asChild size="lg" className="hover-scale group">
+                <Link to="/leadership">
+                  Meet Our Full Leadership Team
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
