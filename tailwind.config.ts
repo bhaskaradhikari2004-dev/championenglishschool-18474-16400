@@ -21,6 +21,9 @@ export default {
 			screens: {
 				'xs': '475px',
 			},
+			fontFamily: {
+				script: ['Great Vibes', 'cursive'],
+			},
 			colors: {
 				'school-blue': 'hsl(var(--school-blue))',
 				'school-orange': 'hsl(var(--school-orange))',
