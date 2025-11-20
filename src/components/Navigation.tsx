@@ -20,13 +20,12 @@ const aboutItems = [
 
 const academicItems = [
   { name: "Events", href: "/events" },
+  { name: "Notices", href: "/notices" },
   { name: "Results", href: "/results" },
   { name: "Gallery", href: "/gallery" },
 ];
 
 const navItems = [
-  { name: "Home", href: "/" },
-  { name: "Notices", href: "/notices" },
   { name: "Child Care", href: "/childcare" },
   { name: "Contact", href: "/contact" },
 ];
@@ -58,15 +57,15 @@ export function Navigation() {
             <div className="hidden lg:flex items-center gap-6 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <MapPin className="h-3.5 w-3.5" />
-                <span>Maitighar, Kathmandu Nepal</span>
+                <span>Bargachhi, Dharan Nepal</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="h-3.5 w-3.5" />
-                <span>01-5344636, 01-5321365</span>
+                <span>025-530302, 9814350277</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5" />
-                <a href="mailto:ktm@sxc.edu.np" className="hover:text-primary transition-colors">ktm@sxc.edu.np</a>
+                <a href="mailto:championschool38@gmail.com" className="hover:text-primary transition-colors">championschool38@gmail.com</a>
               </div>
             </div>
           </div>
