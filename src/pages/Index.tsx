@@ -7,6 +7,7 @@ import { Calendar, Bell, Image, Trophy, Users, Phone, GraduationCap, ArrowRight,
 import { WelcomePopup } from "@/components/WelcomePopup";
 import { supabase } from "@/integrations/supabase/client";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import heroSchool from "@/assets/hero-school.jpg";
 import aboutStudents from "@/assets/about-students.jpg";
 import aboutExcellence from "@/assets/about-excellence.jpg";
 import aboutCommunity from "@/assets/about-community.jpg";
@@ -83,8 +84,17 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroAnim.ref}
-        className="relative bg-gradient-to-r from-primary via-primary/90 to-accent text-primary-foreground py-8 md:py-12 lg:py-16 overflow-hidden"
+        className="relative text-primary-foreground py-8 md:py-12 lg:py-16 overflow-hidden"
       >
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${heroSchool})` }}
+        >
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/70 to-accent/80"></div>
+        </div>
+        
         {/* Animated background elements with 3D effect */}
         <div className="absolute inset-0 overflow-hidden transform-3d">
           <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
