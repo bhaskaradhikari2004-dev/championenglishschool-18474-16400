@@ -84,15 +84,15 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroAnim.ref}
-        className="relative text-primary-foreground py-8 md:py-12 lg:py-16 overflow-hidden"
+        className="relative text-primary-foreground py-16 md:py-24 lg:py-32 min-h-[600px] md:min-h-[700px] lg:min-h-[800px] overflow-hidden"
       >
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroSchool})` }}
         >
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/70 to-accent/80"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/50 to-accent/60"></div>
         </div>
         
         {/* Animated background elements with 3D effect */}
