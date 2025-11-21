@@ -65,8 +65,9 @@ const Index = () => {
         .from('leadership')
         .select('*')
         .eq('is_active', true)
+        .ilike('position', '%principal%')
         .order('display_order', { ascending: true })
-        .limit(3);
+        .limit(1);
 
       if (error) throw error;
       if (data) setLeaders(data);
