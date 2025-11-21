@@ -88,11 +88,11 @@ const Index = () => {
       >
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${heroSchool})` }}
         >
           {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/50 to-accent/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-primary/40 to-accent/50"></div>
         </div>
         
         {/* Animated background elements with 3D effect */}
