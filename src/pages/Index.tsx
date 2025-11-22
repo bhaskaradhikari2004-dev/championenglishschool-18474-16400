@@ -84,31 +84,34 @@ const Index = () => {
       {/* Hero Section */}
       <section 
         ref={heroAnim.ref}
-        className="relative text-primary-foreground py-16 md:py-24 lg:py-32 min-h-[700px] md:min-h-[800px] lg:min-h-[900px] overflow-hidden"
+        className="relative text-primary-foreground overflow-hidden"
       >
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-          style={{ backgroundImage: `url(${heroSchool})` }}
-        >
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/20 to-accent/30"></div>
-        </div>
+        {/* Image container with proper aspect ratio */}
+        <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[21/9]">
+          {/* Background Image */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroSchool})` }}
+          >
+            {/* Gradient Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/20 to-accent/30"></div>
+          </div>
         
-        {/* Animated background elements with 3D effect */}
-        <div className="absolute inset-0 overflow-hidden transform-3d">
-          <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
-          <div className="absolute top-20 right-[10%] w-8 h-8 md:w-20 md:h-20 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-sm"></div>
-          <div className="absolute bottom-20 left-[15%] w-6 h-6 md:w-16 md:h-16 bg-white/10 rounded-full animate-float animation-delay-400 blur-sm"></div>
-          <div className="absolute top-1/2 right-[20%] w-10 h-10 md:w-20 md:h-20 bg-accent/20 rounded-full animate-pulse animation-delay-600 blur-md"></div>
-          <div className="absolute bottom-32 right-[8%] w-8 h-8 md:w-16 md:h-16 bg-white/15 rounded-full animate-float animation-delay-800 blur-sm"></div>
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-shimmer"></div>
-        </div>
-        
-        <div className={`container mx-auto px-4 text-center relative z-10 transition-all duration-1000 transform-3d ${
-          heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-        }`}>
+          {/* Animated background elements with 3D effect */}
+          <div className="absolute inset-0 overflow-hidden transform-3d">
+            <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
+            <div className="absolute top-20 right-[10%] w-8 h-8 md:w-20 md:h-20 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-sm"></div>
+            <div className="absolute bottom-20 left-[15%] w-6 h-6 md:w-16 md:h-16 bg-white/10 rounded-full animate-float animation-delay-400 blur-sm"></div>
+            <div className="absolute top-1/2 right-[20%] w-10 h-10 md:w-20 md:h-20 bg-accent/20 rounded-full animate-pulse animation-delay-600 blur-md"></div>
+            <div className="absolute bottom-32 right-[8%] w-8 h-8 md:w-16 md:h-16 bg-white/15 rounded-full animate-float animation-delay-800 blur-sm"></div>
+            {/* Animated gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-shimmer"></div>
+          </div>
+          
+          <div className={`absolute inset-0 flex items-center justify-center text-center px-4 z-10 transition-all duration-1000 transform-3d ${
+            heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <div className="w-full max-w-4xl">
           <div className="flex justify-center mb-2 md:mb-3">
             <div className="relative transform-3d">
               <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
@@ -134,22 +137,24 @@ const Index = () => {
           }`}>
             ✨ Unleashing the Champion within everyone ✨
           </p>
-          <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
-            heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-          }`}>
-            <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
-              <Link to="/about" className="relative z-10">
-                <span className="relative z-10">Learn More</span>
-                <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
-                <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-              </Link>
-            </Button>
-            <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
-              <Link to="/contact">
-                <span className="relative z-10">Contact Us</span>
-                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
-              </Link>
-            </Button>
+              <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
+                heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}>
+                <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
+                  <Link to="/about" className="relative z-10">
+                    <span className="relative z-10">Learn More</span>
+                    <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
+                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                  </Link>
+                </Button>
+                <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
+                  <Link to="/contact">
+                    <span className="relative z-10">Contact Us</span>
+                    <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
