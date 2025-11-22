@@ -137,23 +137,23 @@ const Index = () => {
           }`}>
             ✨ Unleashing the Champion within everyone ✨
           </p>
-              <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
-                heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}>
-                <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
-                  <Link to="/about" className="relative z-10">
-                    <span className="relative z-10">Learn More</span>
-                    <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
-                  <Link to="/contact">
-                    <span className="relative z-10">Contact Us</span>
-                    <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
-                  </Link>
-                </Button>
-              </div>
+          <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
+            heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
+            <Button asChild className="hover-scale group shadow-2xl h-11 md:h-10 text-sm md:text-base font-semibold relative overflow-hidden bg-gradient-to-r from-primary via-primary to-accent hover:from-accent hover:via-primary hover:to-primary transition-all duration-500 active:scale-95">
+              <Link to="/about" className="relative z-10">
+                <span className="relative z-10">Learn More</span>
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
+                <span className="absolute inset-0 bg-gradient-to-r from-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+              </Link>
+            </Button>
+            <Button asChild variant="outline" className="bg-white/20 border-2 border-white/40 text-white hover:bg-white/30 hover:border-white/60 hover-scale shadow-2xl backdrop-blur-md h-11 md:h-10 text-sm md:text-base font-semibold relative overflow-hidden group active:scale-95">
+              <Link to="/contact">
+                <span className="relative z-10">Contact Us</span>
+                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+              </Link>
+            </Button>
+          </div>
             </div>
           </div>
         </div>
@@ -240,7 +240,7 @@ const Index = () => {
             <div className={`text-center mt-6 lg:mt-8 transition-all duration-1000 delay-600 ${
               leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              <Button asChild className="hover-scale group">
+              <Button asChild className="hover-scale group shadow-xl h-11 md:h-10 text-sm md:text-base font-semibold bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary transition-all duration-500 active:scale-95">
                 <Link to="/leadership">
                   Meet Our Full Leadership Team
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -408,10 +408,10 @@ const Index = () => {
           <div className={`text-center transition-all duration-1000 delay-900 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild size="sm" className="hover-scale group shadow-lg h-9 text-xs md:text-sm">
+            <Button asChild className="hover-scale group shadow-xl h-11 md:h-9 text-sm md:text-base font-semibold bg-gradient-to-r from-primary to-blue-600 hover:from-blue-600 hover:to-primary transition-all duration-500 active:scale-95">
               <Link to="/about">
                 Discover More About Us
-                <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>
@@ -507,15 +507,15 @@ const Index = () => {
                   <p className="text-xs md:text-sm text-white/90">Sunday - Friday: 8:00 AM - 5:00 PM</p>
                 </div>
                 <div className="space-y-2 pointer-events-auto relative z-20">
-                  <Button asChild className="w-full group h-10 text-sm active:scale-95 pointer-events-auto" variant="secondary">
+                  <Button asChild className="w-full group h-11 md:h-10 text-sm md:text-base font-semibold active:scale-95 pointer-events-auto shadow-xl hover:shadow-2xl transition-all duration-300 bg-white text-orange-600 hover:bg-white/90">
                     <Link to="/childcare" className="pointer-events-auto">
                       Learn More About Child Care
-                      <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" className="w-full bg-white/20 border-white/30 text-white hover:bg-white/30 h-10 text-sm active:scale-95 pointer-events-auto">
+                  <Button asChild variant="outline" className="w-full bg-white/30 border-2 border-white/50 text-white hover:bg-white/40 hover:border-white/70 h-11 md:h-10 text-sm md:text-base font-semibold active:scale-95 pointer-events-auto shadow-xl backdrop-blur-md">
                     <a href="tel:9814350277" className="pointer-events-auto">
-                      <Phone className="h-3.5 w-3.5 mr-2" />
+                      <Phone className="h-4 w-4 mr-2" />
                       Call Now
                     </a>
                   </Button>
@@ -632,11 +632,11 @@ const Index = () => {
             <div className={`text-center transition-all duration-1000 delay-400 ${
               contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
             }`}>
-              <Button asChild size="lg" className="group hover:shadow-2xl relative overflow-hidden">
+              <Button asChild className="group hover:shadow-2xl relative overflow-hidden h-12 md:h-11 px-6 md:px-8 text-base md:text-lg font-semibold bg-gradient-to-r from-blue-600 via-primary to-orange-600 hover:from-orange-600 hover:via-primary hover:to-blue-600 transition-all duration-500 active:scale-95 shadow-xl">
                 <Link to="/contact">
                   <span className="relative z-10">Send us a Message</span>
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-orange-600/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform relative z-10" />
+                  <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
                 </Link>
               </Button>
             </div>
