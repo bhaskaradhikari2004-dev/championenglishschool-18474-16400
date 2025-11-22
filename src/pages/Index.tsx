@@ -162,65 +162,65 @@ const Index = () => {
       {/* Leadership Section */}
       <section 
         ref={leadershipAnim.ref}
-        className="py-6 md:py-10 lg:py-14 bg-background relative overflow-hidden"
+        className="py-6 md:py-8 lg:py-10 bg-background relative overflow-hidden"
       >
         <div className="container mx-auto px-4 relative z-10">
-          <div className="space-y-12">
+          <div className="space-y-8">
             {leaders.length > 0 ? (
               leaders.map((leader, index) => (
                 <div 
                   key={leader.id} 
-                  className={`space-y-6 transition-all duration-1000 ${
+                  className={`space-y-4 transition-all duration-1000 ${
                     leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                   }`}
                   style={{ transitionDelay: `${index * 200}ms` }}
                 >
                   {/* Section Title */}
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center text-primary mb-8">
+                  <h2 className="text-2xl md:text-3xl font-bold text-center text-primary mb-6">
                     Message from the {leader.position}
                   </h2>
 
                   {/* Content Grid */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 items-center max-w-6xl mx-auto">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 items-center max-w-5xl mx-auto">
                     {/* Image Section */}
                     <div className={`flex justify-center lg:justify-${index % 2 === 0 ? 'end' : 'start'} ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
                       {leader.image_url ? (
                         <img
                           src={leader.image_url}
                           alt={leader.name}
-                          className="w-full max-w-sm lg:max-w-md rounded-3xl object-cover shadow-xl"
+                          className="w-full max-w-xs lg:max-w-sm rounded-2xl object-cover shadow-lg"
                         />
                       ) : (
-                        <div className="w-full max-w-sm lg:max-w-md aspect-square rounded-3xl bg-muted flex items-center justify-center">
-                          <Users className="h-24 w-24 lg:h-32 lg:w-32 text-muted-foreground" />
+                        <div className="w-full max-w-xs lg:max-w-sm aspect-square rounded-2xl bg-muted flex items-center justify-center">
+                          <Users className="h-16 w-16 lg:h-20 lg:w-20 text-muted-foreground" />
                         </div>
                       )}
                     </div>
 
                     {/* Text Content */}
-                    <div className={`space-y-4 lg:space-y-6 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
+                    <div className={`space-y-3 lg:space-y-4 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
                       {/* Quote Mark */}
-                      <Quote className="h-12 w-12 lg:h-16 lg:w-16 text-muted-foreground/30" />
+                      <Quote className="h-8 w-8 lg:h-10 lg:w-10 text-muted-foreground/30" />
                       
                       {/* Message Text */}
-                      <p className="text-base lg:text-lg leading-relaxed text-foreground/80">
+                      <p className="text-sm lg:text-base leading-relaxed text-foreground/80">
                         {leader.message}
                       </p>
 
                       {/* Read More Link */}
                       <a 
                         href="/leadership" 
-                        className="inline-flex items-center gap-2 text-[#FFA500] hover:text-[#FF8C00] font-medium transition-colors"
+                        className="inline-flex items-center gap-2 text-[#FFA500] hover:text-[#FF8C00] font-medium transition-colors text-sm"
                       >
                         Read More →
                       </a>
 
                       {/* Name in Script Font */}
-                      <div className="pt-4 space-y-1">
-                        <p className="text-2xl lg:text-3xl font-script text-foreground">
+                      <div className="pt-3 space-y-1">
+                        <p className="text-xl lg:text-2xl font-script text-foreground">
                           {leader.name}
                         </p>
-                        <p className="text-base lg:text-lg italic text-foreground/70">
+                        <p className="text-sm lg:text-base italic text-foreground/70">
                           {leader.position}
                         </p>
                       </div>
@@ -237,10 +237,10 @@ const Index = () => {
 
           {/* View All Button */}
           {leaders.length > 0 && (
-            <div className={`text-center mt-8 lg:mt-12 transition-all duration-1000 delay-600 ${
+            <div className={`text-center mt-6 lg:mt-8 transition-all duration-1000 delay-600 ${
               leadershipAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              <Button asChild size="lg" className="hover-scale group">
+              <Button asChild className="hover-scale group">
                 <Link to="/leadership">
                   Meet Our Full Leadership Team
                   <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
