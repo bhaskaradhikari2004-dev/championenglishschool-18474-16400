@@ -81,76 +81,36 @@ const Index = () => {
     <Layout>
       <WelcomePopup />
       
-      {/* Hero Section */}
+      {/* Hero Section - Clean & Modern */}
       <section 
         ref={heroAnim.ref}
-        className="relative text-primary-foreground overflow-hidden"
+        className="relative text-white overflow-hidden"
       >
-        {/* Image container with proper aspect ratio */}
-        <div className="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[21/9]">
+        <div className="relative w-full h-[60vh] md:h-[70vh] lg:h-[80vh]">
           {/* Background Image */}
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${heroSchool})` }}
           >
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/30 via-primary/20 to-accent/30"></div>
-          </div>
-        
-          {/* Animated background elements with 3D effect */}
-          <div className="absolute inset-0 overflow-hidden transform-3d">
-            <div className="absolute top-10 left-[5%] w-12 h-12 md:w-24 md:h-24 bg-white/10 rounded-full animate-float blur-sm"></div>
-            <div className="absolute top-20 right-[10%] w-8 h-8 md:w-20 md:h-20 bg-white/5 rounded-full animate-bounce-gentle animation-delay-200 blur-sm"></div>
-            <div className="absolute bottom-20 left-[15%] w-6 h-6 md:w-16 md:h-16 bg-white/10 rounded-full animate-float animation-delay-400 blur-sm"></div>
-            <div className="absolute top-1/2 right-[20%] w-10 h-10 md:w-20 md:h-20 bg-accent/20 rounded-full animate-pulse animation-delay-600 blur-md"></div>
-            <div className="absolute bottom-32 right-[8%] w-8 h-8 md:w-16 md:h-16 bg-white/15 rounded-full animate-float animation-delay-800 blur-sm"></div>
-            {/* Animated gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/5 to-transparent animate-shimmer"></div>
+            {/* Simple Dark Overlay */}
+            <div className="absolute inset-0 bg-black/40"></div>
           </div>
           
-          <div className={`absolute inset-0 flex items-center justify-center text-center px-4 z-10 transition-all duration-1000 transform-3d ${
+          {/* Hero Content - Centered */}
+          <div className={`absolute inset-0 flex items-center justify-center text-center px-4 transition-all duration-1000 ${
             heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className="w-full max-w-4xl">
-          <div className="flex justify-center mb-2 md:mb-3">
-            <div className="relative transform-3d">
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-xl animate-pulse"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-accent to-white/30 rounded-full blur-2xl animate-pulse animation-delay-400 opacity-50"></div>
-              <GraduationCap className="h-8 w-8 md:h-14 md:w-14 relative animate-bounce-gentle drop-shadow-2xl" />
-              <Sparkles className="absolute -top-1 -right-1 h-3 w-3 md:h-5 md:w-5 animate-pulse text-accent-foreground drop-shadow-lg" />
-              <Sparkles className="absolute -bottom-1 -left-1 h-2.5 w-2.5 md:h-4 md:w-4 animate-pulse animation-delay-600 text-white/90 drop-shadow-lg" />
-            </div>
-          </div>
-          <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 md:mb-3 transition-all duration-1000 delay-200 tracking-tight leading-tight ${
-            heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
-          }`}>
-            Champion English School
-          </h1>
-          <p className={`text-sm sm:text-base md:text-lg mb-2 md:mb-3 opacity-90 flex items-center justify-center gap-1.5 transition-all duration-1000 delay-300 ${
-            heroAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-          }`}>
-            <MapPin className="h-3.5 w-3.5 md:h-4 md:w-4 flex-shrink-0" />
-            <span className="text-xs sm:text-sm md:text-base">Sayapatri Margha, Dharan-15, Nepal</span>
-          </p>
-          <p className={`text-xs sm:text-sm md:text-base mb-4 md:mb-5 opacity-80 max-w-2xl mx-auto font-medium transition-all duration-1000 delay-500 ${
-            heroAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}>
-            ✨ Unleashing the Champion within everyone ✨
-          </p>
-              <div className={`flex flex-col sm:flex-row gap-2 md:gap-3 justify-center px-4 transition-all duration-1000 delay-700 transform-3d ${
-                heroAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}>
-                <Button asChild className="hover-scale group shadow-2xl h-10 text-sm relative overflow-hidden">
-                  <Link to="/about" className="relative z-10">
-                    <span className="relative z-10">Learn More</span>
-                    <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform relative z-10" />
-                    <span className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover-scale shadow-2xl backdrop-blur-sm h-10 text-sm relative overflow-hidden group">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight">
+                Champion English School
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-95 max-w-2xl mx-auto font-light">
+                Unleashing the Champion within everyone
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary transition-all text-base px-8">
                   <Link to="/contact">
-                    <span className="relative z-10">Contact Us</span>
-                    <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                    Schedule a Visit
                   </Link>
                 </Button>
               </div>
@@ -251,271 +211,214 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Section */}
+      {/* About Section - Clean White */}
       <section 
         ref={aboutAnim.ref}
-        className="py-6 md:py-10 lg:py-14 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden"
+        className="py-16 md:py-20 lg:py-24 bg-white dark:bg-background"
       >
-        {/* Animated background patterns with 3D depth */}
-        <div className="absolute inset-0 opacity-5 transform-3d">
-          <div className="absolute top-20 right-10 w-48 h-48 md:w-64 md:h-64 bg-primary rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 left-10 w-48 h-48 md:w-64 md:h-64 bg-accent rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-          <div className="absolute top-1/3 left-1/3 w-56 h-56 md:w-80 md:h-80 bg-blue-500 rounded-full blur-3xl animate-float animation-delay-600"></div>
-          {/* Diagonal gradient animation */}
-          <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/10 to-transparent animate-shimmer"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-5 md:mb-7 transition-all duration-1000 ${
+        <div className="container mx-auto px-4">
+          <div className={`text-center mb-12 transition-all duration-1000 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1.5">
-              About Champion English School
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+              Champion English School
             </h2>
-            <p className="text-xs md:text-sm text-muted-foreground max-w-2xl mx-auto">
-              Where Excellence Meets Character Development
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              {aboutInfo?.welcome_description || 'At Champion English School, we are committed to providing quality education that shapes character, builds confidence, and prepares our students for success in every aspect of life.'}
             </p>
           </div>
 
-          {/* Main Hero Image Section */}
-          <div className={`mb-6 md:mb-8 transition-all duration-1000 delay-200 transform-3d ${
-            aboutAnim.isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
-          }`}>
-            <div className="relative rounded-xl md:rounded-2xl overflow-hidden shadow-xl md:shadow-2xl group">
-              <img 
-                src={aboutStudents} 
-                alt="Champion English School Students"
-                className="w-full h-36 sm:h-48 md:h-64 lg:h-72 object-cover group-hover:scale-110 transition-transform duration-1000"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/20 via-transparent to-orange-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 text-white">
-                <h3 className="text-base md:text-xl lg:text-2xl font-bold mb-1">
-                  {aboutInfo?.welcome_title || 'Nurturing Future Champions'}
-                </h3>
-                <p className="text-xs md:text-sm opacity-90 max-w-3xl line-clamp-2">
-                  {aboutInfo?.welcome_description || 'At Champion English School, we are committed to providing quality education that shapes character, builds confidence, and prepares our students for success in every aspect of life.'}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* Feature Cards with Images */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5 mb-5 md:mb-7">
+          {/* Feature Cards - Simple & Clean */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
             {[
               { 
                 icon: Award, 
                 title: 'Academic Excellence', 
                 text: 'Focus on academic excellence with experienced faculty',
                 image: aboutExcellence,
-                delay: 300
+                delay: 100
               },
               { 
                 icon: Users, 
                 title: 'Strong Community', 
                 text: 'Building a supportive and inclusive learning community',
                 image: aboutCommunity,
-                delay: 450
+                delay: 200
               },
               { 
                 icon: Lightbulb, 
                 title: 'Holistic Development', 
                 text: 'Nurturing mind, body, and character for complete growth',
                 image: aboutHolistic,
-                delay: 600
+                delay: 300
               }
             ].map((item) => (
               <Card 
                 key={item.title}
-                className={`group overflow-hidden hover:shadow-2xl transition-all duration-700 border-2 hover:border-primary/30 transform-3d ${
+                className={`group overflow-hidden hover:shadow-xl transition-all duration-500 bg-background border ${
                   aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: `${item.delay}ms` }}
               >
-                <div className="relative h-28 md:h-36 overflow-hidden">
+                <div className="relative h-48 overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-1000"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-transparent to-orange-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                  <div className="absolute top-3 left-3">
-                    <div className="bg-white/90 backdrop-blur-sm rounded-full p-2 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                      <item.icon className="h-4 w-4 md:h-5 md:w-5 text-primary" />
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                 </div>
-                <CardHeader className="pb-2">
-                  <CardTitle className="text-sm md:text-base group-hover:text-primary transition-colors">
-                    {item.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                <CardHeader className="pb-3">
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      <item.icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg">
+                      {item.title}
+                    </CardTitle>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.text}
                   </p>
-                </CardContent>
+                </CardHeader>
               </Card>
             ))}
           </div>
 
-          {/* Mission, Vision, Values Grid */}
-          <div className={`grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5 mb-5 md:mb-7 transition-all duration-1000 delay-700 ${
+          {/* Mission, Vision, Values - Clean Cards */}
+          <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 transition-all duration-1000 delay-400 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             {[
               { 
                 icon: Target, 
                 title: 'Our Mission', 
-                text: aboutInfo?.mission || 'Provide holistic education that develops excellence and character.',
-                gradient: 'from-blue-500/10 to-blue-600/10'
+                text: aboutInfo?.mission || 'Provide holistic education that develops excellence and character.'
               },
               { 
                 icon: Eye, 
                 title: 'Our Vision', 
-                text: aboutInfo?.vision || 'Be a leading institution nurturing confident global citizens.',
-                gradient: 'from-purple-500/10 to-purple-600/10'
+                text: aboutInfo?.vision || 'Be a leading institution nurturing confident global citizens.'
               },
               { 
                 icon: Heart, 
                 title: 'Our Values', 
-                text: aboutInfo?.values || 'Excellence, integrity, respect, and innovation.',
-                gradient: 'from-pink-500/10 to-pink-600/10'
+                text: aboutInfo?.values || 'Excellence, integrity, respect, and innovation.'
               }
-            ].map((item, index) => (
+            ].map((item) => (
               <Card 
                 key={item.title} 
-                className={`text-center hover-scale hover:shadow-xl transition-all duration-500 border-2 hover:border-primary/30 overflow-hidden group bg-gradient-to-br ${item.gradient}`}
+                className="text-center hover:shadow-xl transition-all duration-500 bg-muted/30 border"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <CardHeader className="pb-2 md:pb-3 relative z-10">
-                  <div className="mx-auto mb-2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                    <item.icon className="h-5 w-5 md:h-6 md:w-6 text-primary" />
+                <CardHeader className="pb-4">
+                  <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center">
+                    <item.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <CardTitle className="text-sm md:text-base">{item.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="relative z-10">
-                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                  <CardTitle className="text-xl mb-3">{item.title}</CardTitle>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
                     {item.text}
                   </p>
-                </CardContent>
+                </CardHeader>
               </Card>
             ))}
           </div>
 
           {/* CTA Button */}
-          <div className={`text-center transition-all duration-1000 delay-900 ${
+          <div className={`text-center mt-12 transition-all duration-1000 delay-600 ${
             aboutAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <Button asChild size="sm" className="hover-scale group shadow-lg h-9 text-xs md:text-sm">
+            <Button asChild size="lg" className="group">
               <Link to="/about">
                 Discover More About Us
-                <ArrowRight className="ml-1.5 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Child Care Center Section */}
+      {/* Child Care Center Section - Clean */}
       <section 
         ref={childCareAnim.ref}
-        className="py-6 md:py-10 lg:py-14 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 dark:from-amber-950/20 dark:via-orange-950/20 dark:to-yellow-950/20 relative overflow-hidden"
+        className="py-16 md:py-20 lg:py-24 bg-muted/30"
       >
-        {/* Decorative elements with 3D depth */}
-        <div className="absolute inset-0 opacity-10 transform-3d">
-          <div className="absolute top-10 left-10 w-24 h-24 md:w-32 md:h-32 bg-orange-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-10 w-32 h-32 md:w-40 md:h-40 bg-amber-400 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-yellow-400 rounded-full blur-3xl animate-float animation-delay-600"></div>
-          {/* Shimmer effect */}
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-orange-200/30 to-transparent animate-shimmer"></div>
-        </div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`text-center mb-5 md:mb-7 transition-all duration-1000 transform-3d ${
+        <div className="container mx-auto px-4">
+          <div className={`text-center mb-12 transition-all duration-1000 ${
             childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="inline-block mb-2 relative">
-              <div className="absolute inset-0 bg-orange-500/20 blur-2xl rounded-full animate-pulse"></div>
-              <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/20 backdrop-blur-sm rounded-full p-2.5 md:p-3 relative transform-3d hover:scale-110 transition-transform duration-500">
-                <Baby className="h-7 w-7 md:h-9 md:w-9 text-orange-600 dark:text-orange-400 animate-bounce-gentle" />
-              </div>
-            </div>
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold mb-1.5 text-orange-900 dark:text-orange-100">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
               Champion Child Care Centre
             </h2>
-            <p className="text-xs md:text-sm text-orange-800/80 dark:text-orange-200/80 max-w-2xl mx-auto mb-2">
+            <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Discovering a world of learning and wonder, preparing children for a lifetime of joyful learning and academic success
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-3 md:gap-5 mb-5">
-            <Card className={`bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-2 hover:border-orange-300 dark:hover:border-orange-700 transition-all duration-700 hover:shadow-2xl hover-scale transform-3d relative overflow-hidden group ${
-              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+            <Card className={`bg-background hover:shadow-xl transition-all duration-500 ${
+              childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}>
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-transparent to-amber-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <CardHeader>
-                <CardTitle className="text-base md:text-lg text-orange-900 dark:text-orange-100 flex items-center gap-2">
-                  <Clock className="h-4 w-4 text-orange-600" />
-                  Open for Enrollment 2025/2026
-                </CardTitle>
-                <CardDescription className="text-xs md:text-sm text-orange-800/70 dark:text-orange-200/70">
+                <div className="flex items-center gap-2 mb-2">
+                  <Clock className="h-5 w-5 text-primary" />
+                  <CardTitle className="text-xl">
+                    Open for Enrollment 2025/2026
+                  </CardTitle>
+                </div>
+                <CardDescription className="text-base">
                   The Right Place to Play, Learn & Grow for Your Children
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="flex items-center gap-2 text-xs md:text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange-600 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Breakfast, Lunch and Dinner</span>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
+                  <span className="text-sm text-muted-foreground">Breakfast, Lunch and Dinner</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange-600 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Learning by doing</span>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
+                  <span className="text-sm text-muted-foreground">Learning by doing</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange-600 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">Quiet home environment</span>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
+                  <span className="text-sm text-muted-foreground">Quiet home environment</span>
                 </div>
-                <div className="flex items-center gap-2 text-xs md:text-sm">
-                  <div className="w-1.5 h-1.5 rounded-full bg-orange-600 flex-shrink-0"></div>
-                  <span className="text-muted-foreground">In-school medical nurse</span>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 rounded-full bg-primary flex-shrink-0 mt-2"></div>
+                  <span className="text-sm text-muted-foreground">In-school medical nurse</span>
                 </div>
               </CardContent>
             </Card>
 
-            <Card className={`bg-gradient-to-br from-orange-500 to-amber-600 text-white border-0 hover:shadow-2xl transition-all duration-700 hover-scale transform-3d relative overflow-hidden group ${
-              childCareAnim.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'
-            }`}>
-              <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-transparent to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+            <Card className={`bg-primary text-primary-foreground hover:shadow-xl transition-all duration-500 ${
+              childCareAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`} style={{ transitionDelay: '100ms' }}>
               <CardHeader>
-                <CardTitle className="text-lg md:text-xl text-white flex items-center gap-2">
-                  <Sparkles className="h-5 w-5" />
+                <CardTitle className="text-2xl flex items-center gap-2">
+                  <Sparkles className="h-6 w-6" />
                   FREE Admission!
                 </CardTitle>
-                <CardDescription className="text-white/90 text-sm md:text-base">
+                <CardDescription className="text-primary-foreground/90 text-base">
                   Special offer for 2025/2026 enrollment
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="bg-white/20 backdrop-blur-sm rounded-lg p-3">
-                  <div className="flex items-center gap-2 mb-1.5">
-                    <Clock className="h-4 w-4" />
-                    <span className="font-semibold text-sm">Operating Hours</span>
+              <CardContent className="space-y-4">
+                <div className="bg-primary-foreground/10 rounded-lg p-4">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Clock className="h-5 w-5" />
+                    <span className="font-semibold">Operating Hours</span>
                   </div>
-                  <p className="text-xs md:text-sm text-white/90">Sunday - Friday: 8:00 AM - 5:00 PM</p>
+                  <p className="text-sm">Sunday - Friday: 8:00 AM - 5:00 PM</p>
                 </div>
-                <div className="space-y-2 pointer-events-auto relative z-20">
-                  <Button asChild className="w-full group h-10 text-sm active:scale-95 pointer-events-auto" variant="secondary">
-                    <Link to="/childcare" className="pointer-events-auto">
+                <div className="space-y-3">
+                  <Button asChild className="w-full" variant="secondary" size="lg">
+                    <Link to="/childcare">
                       Learn More About Child Care
-                      <ArrowRight className="ml-2 h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                  <Button asChild variant="outline" className="w-full bg-white/20 border-white/30 text-white hover:bg-white/30 h-10 text-sm active:scale-95 pointer-events-auto">
-                    <a href="tel:9814350277" className="pointer-events-auto">
-                      <Phone className="h-3.5 w-3.5 mr-2" />
+                  <Button asChild variant="outline" className="w-full border-primary-foreground/20 hover:bg-primary-foreground/10" size="lg">
+                    <a href="tel:9814350277">
+                      <Phone className="h-4 w-4 mr-2" />
                       Call Now
                     </a>
                   </Button>
@@ -526,117 +429,97 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Contact Section - Modern & Elegant */}
+      {/* Contact Section - Clean */}
       <section 
         ref={contactAnim.ref}
-        className="py-8 md:py-12 lg:py-16 bg-gradient-to-br from-blue-50 via-white to-orange-50 dark:from-blue-950/20 dark:via-gray-900 dark:to-orange-950/20 relative overflow-hidden"
+        className="py-16 md:py-20 lg:py-24 bg-white dark:bg-background"
       >
-        {/* Animated background elements */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-orange-500 rounded-full blur-3xl animate-pulse animation-delay-400"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-blue-400 to-orange-400 rounded-full blur-3xl animate-pulse animation-delay-600"></div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
-          <div className={`max-w-5xl mx-auto transition-all duration-1000 transform-3d ${
+        <div className="container mx-auto px-4">
+          <div className={`max-w-5xl mx-auto transition-all duration-1000 ${
             contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
-            <div className="text-center mb-8 md:mb-10">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 bg-gradient-to-r from-blue-600 via-primary to-orange-600 bg-clip-text text-transparent">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
                 Get in Touch
               </h2>
-              <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
                 We're here to answer your questions and help you get started
               </p>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Visit Card */}
               <Card 
-                className={`group relative overflow-hidden border-2 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover-scale ${
+                className={`text-center hover:shadow-xl transition-all duration-500 bg-background ${
+                  contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+                }`}
+              >
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <MapPin className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="text-xl mb-2">Visit Us</CardTitle>
+                  <CardDescription>Come see our school</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm font-medium">Sayapatri Margha</p>
+                  <p className="text-sm font-medium">Dharan-15, Nepal</p>
+                </CardContent>
+              </Card>
+
+              {/* Call Card */}
+              <a 
+                href="tel:+977025530302"
+                className={`block transition-all duration-500 ${
                   contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
                 style={{ transitionDelay: '100ms' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
-                <CardHeader className="text-center pb-3">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                    <MapPin className="h-8 w-8 text-blue-600" />
-                  </div>
-                  <CardTitle className="text-base md:text-lg mb-1">Visit Us</CardTitle>
-                  <CardDescription className="text-xs md:text-sm">Come see our school</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-sm md:text-base font-medium">Sayapatri Margha</p>
-                  <p className="text-sm md:text-base font-medium">Dharan-15, Nepal</p>
-                </CardContent>
-              </Card>
-
-              {/* Call Card - Clickable */}
-              <a 
-                href="tel:+977025530302"
-                className={`block transition-all duration-500 hover-scale ${
-                  contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
-                style={{ transitionDelay: '200ms' }}
-              >
-                <Card className="group relative overflow-hidden border-2 hover:border-orange-500/30 transition-all duration-500 hover:shadow-2xl h-full cursor-pointer bg-gradient-to-br from-orange-500 to-amber-600 text-white">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-yellow-400/20 via-transparent to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  <div className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
-                  <CardHeader className="text-center pb-3 relative z-10">
-                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg group-hover:bg-white/30">
-                      <Phone className="h-8 w-8 text-white" />
+                <Card className="text-center hover:shadow-xl transition-all duration-500 h-full cursor-pointer bg-primary text-primary-foreground">
+                  <CardHeader>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary-foreground/10 flex items-center justify-center">
+                      <Phone className="h-8 w-8" />
                     </div>
-                    <CardTitle className="text-base md:text-lg mb-1 text-white flex items-center justify-center gap-2">
-                      <Sparkles className="h-4 w-4" />
-                      Call Us Now
-                      <Sparkles className="h-4 w-4" />
-                    </CardTitle>
-                    <CardDescription className="text-xs md:text-sm text-white/90">Tap to call directly</CardDescription>
+                    <CardTitle className="text-xl mb-2">Call Us Now</CardTitle>
+                    <CardDescription className="text-primary-foreground/80">Tap to call directly</CardDescription>
                   </CardHeader>
-                  <CardContent className="text-center relative z-10">
-                    <p className="text-lg md:text-xl font-bold text-white group-hover:scale-105 transition-transform duration-300">
+                  <CardContent>
+                    <p className="text-lg font-bold">
                       +977-025-530302
                     </p>
-                    <p className="text-xs md:text-sm text-white/80 mt-2">Available during office hours</p>
+                    <p className="text-sm text-primary-foreground/70 mt-2">Available during office hours</p>
                   </CardContent>
                 </Card>
               </a>
 
               {/* Hours Card */}
               <Card 
-                className={`group relative overflow-hidden border-2 hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover-scale ${
+                className={`text-center hover:shadow-xl transition-all duration-500 bg-background ${
                   contactAnim.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: '300ms' }}
+                style={{ transitionDelay: '200ms' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-blue-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-shimmer"></div>
-                <CardHeader className="text-center pb-3">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-600/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-lg">
-                    <Clock className="h-8 w-8 text-blue-600" />
+                <CardHeader>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                    <Clock className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="text-base md:text-lg mb-1">Office Hours</CardTitle>
-                  <CardDescription className="text-xs md:text-sm">We're here to help</CardDescription>
+                  <CardTitle className="text-xl mb-2">Office Hours</CardTitle>
+                  <CardDescription>We're here to help</CardDescription>
                 </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-sm md:text-base font-medium">Sunday - Friday</p>
-                  <p className="text-sm md:text-base font-medium">10:00 AM - 4:00 PM</p>
+                <CardContent>
+                  <p className="text-sm font-medium">Sunday - Friday</p>
+                  <p className="text-sm font-medium">10:00 AM - 4:00 PM</p>
                 </CardContent>
               </Card>
             </div>
             
-            <div className={`text-center transition-all duration-1000 delay-400 ${
+            <div className={`text-center mt-12 transition-all duration-1000 delay-300 ${
               contactAnim.isVisible ? 'opacity-100' : 'opacity-0'
             }`}>
-              <Button asChild size="lg" className="group hover:shadow-2xl relative overflow-hidden">
+              <Button asChild size="lg" className="group">
                 <Link to="/contact">
-                  <span className="relative z-10">Send us a Message</span>
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform relative z-10" />
-                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-orange-600/20 scale-0 group-hover:scale-100 transition-transform duration-500 rounded-lg"></span>
+                  Send us a Message
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </Button>
             </div>
