@@ -317,7 +317,7 @@ const Index = () => {
                 text: 'Building a supportive and inclusive learning community',
                 image: aboutCommunity,
                 delay: 450,
-                imagePosition: 'object-center'
+                imagePosition: 'object-[center_30%]'
               },
               { 
                 icon: Lightbulb, 
