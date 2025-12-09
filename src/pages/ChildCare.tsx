@@ -4,17 +4,57 @@ import { Button } from "@/components/ui/button";
 import { Check, Clock, Phone, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
-import childcareBanner from "@/assets/childcare-banner.png";
-import childcareClassroom from "@/assets/childcare-classroom.jpg";
-import childcareActivities from "@/assets/childcare-activities.jpg";
-import childcareMeals from "@/assets/childcare-meals.jpg";
+import { supabase } from "@/integrations/supabase/client";
+import childcareBannerFallback from "@/assets/childcare-banner.png";
+import childcareClassroomFallback from "@/assets/childcare-classroom.jpg";
+import childcareActivitiesFallback from "@/assets/childcare-activities.jpg";
+import childcareMealsFallback from "@/assets/childcare-meals.jpg";
+
+interface ChildCareImage {
+  id: string;
+  section: string;
+  image_url: string;
+  title: string | null;
+  description: string | null;
+  is_active: boolean;
+}
 
 export default function ChildCare() {
   const [showBanner, setShowBanner] = useState(false);
+  const [images, setImages] = useState<Record<string, string>>({});
 
   useEffect(() => {
     setShowBanner(true);
+    fetchImages();
   }, []);
+
+  const fetchImages = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("childcare_images")
+        .select("*")
+        .eq("is_active", true)
+        .order("display_order", { ascending: true });
+
+      if (error) throw error;
+
+      // Map images by section (use first active image for each section)
+      const imageMap: Record<string, string> = {};
+      data?.forEach((img: ChildCareImage) => {
+        if (!imageMap[img.section]) {
+          imageMap[img.section] = img.image_url;
+        }
+      });
+      setImages(imageMap);
+    } catch (error) {
+      console.error("Error fetching childcare images:", error);
+    }
+  };
+
+  // Get image URL with fallback to static imports
+  const getImage = (section: string, fallback: string) => {
+    return images[section] || fallback;
+  };
 
   const features = [
     "Breakfast, Lunch and Dinner",
@@ -33,16 +73,16 @@ export default function ChildCare() {
           <picture>
             <source
               media="(max-width: 640px)"
-              srcSet={childcareBanner}
+              srcSet={getImage("banner", childcareBannerFallback)}
               width="640"
             />
             <source
               media="(max-width: 1024px)"
-              srcSet={childcareBanner}
+              srcSet={getImage("banner", childcareBannerFallback)}
               width="1024"
             />
             <img 
-              src={childcareBanner} 
+              src={getImage("banner", childcareBannerFallback)} 
               alt="Champion Child Care Centre" 
               className="w-full h-auto object-contain max-h-[85vh] sm:max-h-[80vh] md:max-h-[75vh] rounded-lg"
               loading="eager"
@@ -65,7 +105,7 @@ export default function ChildCare() {
         {/* Hero Image Section */}
         <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
           <img 
-            src={childcareClassroom} 
+            src={getImage("classroom", childcareClassroomFallback)} 
             alt="Champion Child Care Classroom" 
             className="w-full h-48 sm:h-64 md:h-80 lg:h-96 object-cover"
             loading="lazy"
@@ -77,7 +117,7 @@ export default function ChildCare() {
           <Card className="overflow-hidden">
             <div className="h-40 sm:h-48 md:h-56 overflow-hidden">
               <img 
-                src={childcareActivities} 
+                src={getImage("activities", childcareActivitiesFallback)} 
                 alt="Children Learning Activities" 
                 className="w-full h-full object-cover"
                 loading="lazy"
@@ -121,7 +161,7 @@ export default function ChildCare() {
           <Card className="bg-primary/5 overflow-hidden">
             <div className="h-40 sm:h-48 md:h-56 overflow-hidden">
               <img 
-                src={childcareMeals} 
+                src={getImage("meals", childcareMealsFallback)} 
                 alt="Nutritious Meals for Children" 
                 className="w-full h-full object-cover"
                 loading="lazy"
