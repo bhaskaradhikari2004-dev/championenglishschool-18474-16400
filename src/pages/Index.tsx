@@ -325,7 +325,7 @@ const Index = () => {
                 text: 'Nurturing mind, body, and character for complete growth',
                 image: aboutHolistic,
                 delay: 600,
-                imagePosition: 'object-top'
+                imagePosition: 'object-[center_35%]'
               }
             ].map((item) => (
               <Card 
