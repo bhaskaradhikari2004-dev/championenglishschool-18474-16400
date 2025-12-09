@@ -41,7 +41,7 @@ export function Navigation() {
         <div className="container mx-auto px-4">
           <div className="flex h-10 items-center justify-between text-xs">
             <div className="flex items-center gap-4 text-muted-foreground">
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <a href="https://www.facebook.com/76champ" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
                 <Facebook className="h-4 w-4" />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
