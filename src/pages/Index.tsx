@@ -308,21 +308,24 @@ const Index = () => {
                 title: 'Academic Excellence', 
                 text: 'Focus on academic excellence with experienced faculty',
                 image: aboutExcellence,
-                delay: 300
+                delay: 300,
+                imagePosition: 'object-center'
               },
               { 
                 icon: Users, 
                 title: 'Strong Community', 
                 text: 'Building a supportive and inclusive learning community',
                 image: aboutCommunity,
-                delay: 450
+                delay: 450,
+                imagePosition: 'object-center'
               },
               { 
                 icon: Lightbulb, 
                 title: 'Holistic Development', 
                 text: 'Nurturing mind, body, and character for complete growth',
                 image: aboutHolistic,
-                delay: 600
+                delay: 600,
+                imagePosition: 'object-top'
               }
             ].map((item) => (
               <Card 
@@ -336,7 +339,7 @@ const Index = () => {
                   <img 
                     src={item.image} 
                     alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-110 group-hover:rotate-1 transition-all duration-1000"
+                    className={`w-full h-full object-cover ${item.imagePosition} group-hover:scale-110 group-hover:rotate-1 transition-all duration-1000`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-500/30 via-transparent to-orange-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
