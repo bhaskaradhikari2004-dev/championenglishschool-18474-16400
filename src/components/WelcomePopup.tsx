@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 
@@ -81,7 +81,9 @@ export function WelcomePopup() {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-[95vw] sm:max-w-2xl md:max-w-3xl lg:max-w-4xl p-0 overflow-hidden border-0">
+      <DialogContent className="max-w-[95vw] overflow-hidden border-0 p-0 sm:max-w-2xl md:max-w-3xl lg:max-w-4xl" aria-describedby="welcome-popup-description">
+        <DialogTitle className="sr-only">Champion English School announcement</DialogTitle>
+        <DialogDescription id="welcome-popup-description" className="sr-only">School announcement image {currentIndex + 1} of {images.length}</DialogDescription>
         <div className="relative w-full">
           <picture>
             <source
